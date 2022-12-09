@@ -25,6 +25,7 @@ Usage: setup.sh [-b] [-d DEST_DIR] [-y] [-h]
 
     -b            Backup all items that would be overridden
     -d DEST_DIR   Specify alternate directory for dotfiles
+    -g GIT_REPO   Specify Git repo URN
     -p PROFILE    Specify bash profile for this computer
     -y            Respond yes to all prompts
     -h            Display this help message
