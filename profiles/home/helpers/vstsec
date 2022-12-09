@@ -1,0 +1,79 @@
+#!/usr/bin/env python
+
+# You must install the jira module for this to work
+# pip intall jira
+
+from jira import JIRA
+import argparse
+import getpass
+import signal
+import sys
+
+parser = argparse.ArgumentParser(description='Review VSTSEC tickets')
+parser.add_argument('-u', '--user', help='Username for Jira')
+group = parser.add_mutually_exclusive_group()
+group.add_argument('-p', '--password', help='Password for Jira')
+group.add_argument('-P', '--prompt', help='Prompt for Jira password', action="store_true")
+parser.add_argument('-m', '--maxresults', help='Maximum number of issues to return', default=0)
+args = parser.parse_args()
+
+def handler_sigint(signum, frame):
+    print '\nProgram exited by keyboard input.'
+    sys.exit(1)
+
+signal.signal(signal.SIGINT, handler_sigint)
+
+if not args.user:
+    print 'Missing USER parameter'
+    parser.print_help()
+    quit()
+
+if not args.password and not args.prompt:
+    print 'Must specify password option'
+    parser.print_help()
+    quit()
+
+if args.prompt:
+    args.password = getpass.getpass('Enter Jira password for ' + args.user + ': ')
+
+def get_issue_info(i):
+    issue = {}
+    issue['key'] = i.key
+    issue['host'] = i.fields.customfield_12268
+    issue['updated'] = i.fields.updated
+
+    comments = jira.comments(i.key)
+    if len(comments) > 0:
+        issue['message'] = sorted(comments, key=lambda x: x.updated, reverse=True)[0].body
+    else:
+        issue['message'] = i.fields.description
+
+    return issue
+
+def confirm_update(i):
+    print 
+    print 'Ticket:  ' + i['key']
+    print 'Host:    ' + i['host']
+    print 'Updated: ' + i['updated']
+    print 'Message: ' + i['message']
+    print
+
+    a = raw_input('Mark ticket as Reviewed? [yN] ')
+
+    return a.lower()
+
+
+jira = JIRA('https://tickets.ingramcontent.com', basic_auth=(args.user, args.password))
+
+print 'Getting tickets...'
+issues = jira.search_issues('project = VSTSEC AND resolution = Unresolved AND assignee is EMPTY ORDER BY updated DESC', maxResults=args.maxresults)
+print 'Retrieved ', len(issues), ' tickets.'
+if len(issues) > 0:
+    print 'Getting ticket info. This may take a while if there are many comments.'
+
+for i in issues:
+    issue = get_issue_info(i)
+    if confirm_update(issue) == 'y':
+        jira.transition_issue(i.key, 'Reviewed')
+        print 'Marked ' + i.key + ' as Reviewed.'
+

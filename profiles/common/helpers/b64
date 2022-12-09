@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+require 'base64'
+require 'optparse'
+
+options = {}
+options[:decode] = false
+
+opts = OptionParser.new do |o|
+    o.banner = "Usage: #{$0} [OPTIONS]"
+    o.separator ""
+    o.on("-s", "--string STRING", "String to Base64 encode/decode") {|v| options[:string] = v}
+    o.on("-d", "--decode", "Decode string") {|v| options[:decode] = true}
+    o.on("-i", "--inputfile INPUTFILE", "File containing the string to encode/decode") {|v| options[:inputfile] = v}
+    o.on_tail("-h", "--help", "Show this help message") do
+        puts o
+        exit
+    end
+end
+
+begin
+    opts.parse! ARGV
+    raise OptionParser::MissingArgument, 'STRING or INPUTFILE' if options[:string].nil? && options[:inputfile].nil?
+rescue => arg_err
+    puts "#{arg_err.message}"
+    puts opts
+    exit
+end
+
+if ! options[:inputfile].nil?
+    options[:string] = File.read(File.expand_path(options[:inputfile]))
+end
+
+if options[:decode]
+    begin
+        puts "#{Base64::strict_decode64(options[:string])}"
+    rescue => err
+        puts "Error decoding string!\n#{err}"
+    end
+else
+    puts "#{Base64::strict_encode64(options[:string])}"
+end
+

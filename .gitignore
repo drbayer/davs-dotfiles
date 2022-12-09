@@ -1,0 +1,8 @@
+*.swp
+**/.DS_Store
+profiles/work/bitbar
+
+# special dirs to exclude
+safety-zone/*
+!safety-zone/README.md
+profiles/active

@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+
+module Davws
+    
+    require 'json'
+    require 'optparse'
+    require 'json'
+    require 'aws-sdk-ec2'
+
+    def list_amis(filter, region='us-east-1')
+        self.get_amis(filter, region)
+        (@images.sort_by {|i| -i.creation_date}).reverse.each do |i|
+            puts "#{i.creation_date}    #{i.id}    #{i.name}"
+        end
+    end
+
+    def get_amis(filter, region='us-east-1')
+        init_ec2(region) unless @ec2
+        @images = @ec2.images({filters: [{name: 'name', values: ["*#{filter}*"]}]})
+    end
+
+    def deregister_amis(filter, dryrun=false, region='us-east-1')
+        self.get_amis(filter, region)
+        @images.each do |i|
+            puts "Deregistering AMI #{i.name}"
+            begin
+                dryrun ? i.deregister(dry_run: dryrun) : i.deregister()
+            rescue Aws::EC2::Errors::DryRunOperation
+                puts "DryRun: Deregister #{i.name}, created #{i.creation_date}"
+            end
+        end
+    end
+
+    def deregister_ami(image, dryrun=true)
+        begin
+            image.deregister(dry_run: dryrun)
+        rescue Aws::EC2::Errors::DryRunOperation
+            puts "DryRun: Deregister #{image.name}, created #{image.creation_date}"
+        end
+    end
+
+    private
+
+    def init_ec2(region)
+        @ec2 = Aws::EC2::Resource.new(region: region)
+    end
+
+    def get_opts(args)
+        options = {}
+        OptionParser.new do |o|
+            o.banner = "Usage: #{$0} [OPTIONS]"
+            o.separator ""
+            o.on("-f", "--filter FILTER", "Search filter") {|v| options[:filter] = v}
+            o.on("-r", "--region REGION", "AWS Region") {|v| options[:region] = v}
+            o.on("-d", "--dryrun", "Dry Run") {|v| options[:dryrun] = true}
+            o.on_tail("-h", "--help" "Show this help message") do 
+                puts o
+                exit
+            end
+        end.parse!
+
+        options
+    end
+
+end
+
+class MyAWS
+    include Davws
+    
+    def initialize(args)
+        cmd, *opts = args
+        options = get_opts(opts)
+        if self.respond_to?(cmd)
+            # options sending as single string - fix for multiple vals & val order
+            self.send(cmd, options.values.join(" "))
+        end
+    end
+end
+
+MyAWS.new(ARGV)
+

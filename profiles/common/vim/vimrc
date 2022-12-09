@@ -1,0 +1,67 @@
+set nocompatible
+filetype plugin on
+
+if !empty(glob("~/.vim/plugins.vim"))
+    so ~/.vim/plugins.vim
+endif
+
+syntax on
+set termguicolors
+
+set fileformat=unix
+set encoding=UTF-8
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+set autoindent
+set smartindent
+set nowrap
+set listchars=tab:>-i,eol:$,extends:>,precedes:<
+
+set number
+set ruler
+"set cursorline
+"hi CursorLine cterm=NONE ctermbg=darkgrey
+set signcolumn=auto
+set showcmd
+set showmatch
+
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+" set ignorecase
+set smartcase
+set incsearch
+set nohlsearch
+nnoremap <CR> :noh<CR><CR>:<backspace>
+
+" Color settings for statusline
+hi User1 ctermfg=166 "orange
+hi User2 ctermfg=52  "red
+hi User3 ctermfg=201 "lavender
+hi User4 ctermfg=154 "green
+hi User5 ctermfg=178 "gold
+
+" Statusline options
+set statusline=
+set statusline+=%5*\ \ %f\               "show filename in green
+set statusline+=%2*%m\                 "show modified flag in red
+set statusline+=%#warningmsg#          "show syntastic warning msg
+""set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%3*%=%{&ff}\           "show fileformat (dos/unix) in lavender
+set statusline+=%1*%l/%L\              "show current line/total lines in orange
+set statusline+=%4*%c\                 "show current cursor column in pale green
+set laststatus=2
+
+" so ~/.vim/autoclose.vim
+if !empty(glob("~/.bash.d/profiles/active/vimrc"))
+    so ~/.bash.d/profiles/active/vimrc
+endif
+
+runtime! ~/.vim/ftplugin/*.vim
+

@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'optparse'
+
+options = {}
+
+opts = OptionParser.new do |o|
+    o.banner = "Usage: #{$0} [OPTIONS]"
+    o.separator ""
+    o.on("-f", "--file FILE", "Config file to apply to k8s nodes") {|v| options[:file] = v}
+    o.on("-e", "--environment ENVIRONMENT", "Environment to apply config changes (i.e. prod/nonprod)") {|v| options[:env] = v}
+    o.on("-b", "--background", "Apply to background worker context") {|v| options[:bg] = true}
+    o.on_tail("-h", "--help", "Show this help message") do
+        puts o
+        exit
+    end
+end
+
+begin
+    opts.parse! ARGV
+    raise OptionParser::MissingArgument, 'FILE' if options[:file].nil?
+    raise OptionParser::MissingArgument, 'ENVIRONMENT' if options[:env].nil?
+rescue => arg_err
+    puts "#{arg_err.message}"
+    puts opts
+    exit
+end
+
+kube_file = File.expand_path("~/.kube/config")
+begin
+    config = YAML.load_file(kube_file)
+rescue SystemCallError
+    puts "Unable to load #{kube_file}"
+    exit
+rescue Psych::SyntaxError
+    puts "Invalid YAML file #{kube_file}"
+    exit
+end
+
+config_file = File.expand_path(options[:file])
+begin
+    YAML.load_file(config_file)
+rescue SystemCallError 
+    puts "#{config_file} not found!"
+    exit
+rescue Psych::SyntaxError
+    puts "Invalid YAML found in #{config_file}"
+    exit
+end
+
+options[:env] = "#{options[:env]}bg" if options[:bg]
+
+config['contexts'].each do |c|
+    # don't add bg to regex - that forces services to apply to back ends
+    if /(?:^|_)#{options[:env]}[0-9]/.match(c['name'])
+        result = %x( kubectl apply -f #{config_file} --context #{c['name']} 2>&1 )
+        if $?.exitstatus == 0
+            puts "Applied #{config_file} to #{c['name']}"
+        else
+            puts "Error applying #{config_file} to #{c['name']}:\n#{result}"
+        end
+    end
+end

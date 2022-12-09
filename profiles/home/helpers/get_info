@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+module WhatIs
+    require 'net/http'
+    require 'uri'
+    require 'ipaddr'
+
+    @@workip = '96.63.64.0/18'
+
+    def myip()
+        uri = URI.parse("http://ipinfo.io/ip")
+        response = Net::HTTP.get_response(uri)
+        response.body
+    end
+    
+    def atwork?
+        work = IPAddr.new(@@workip)
+        here = IPAddr.new(myip)
+        if work.include?(here)
+            true
+        else
+            false
+        end
+    end
+end
+
+class Me
+    include WhatIs
+end
+
+f = Me.new
+
+args = ARGV
+cmd = args.shift
+
+if WhatIs.instance_methods(false).include?(cmd.to_sym)
+    puts f.send(cmd.to_sym)
+else
+    puts "Method #{cmd} not found!"
+end
+

@@ -1,0 +1,3 @@
+[console_scripts]
+python_package = python_package.scripts.python_package:python_package
+
