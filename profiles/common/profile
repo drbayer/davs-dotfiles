@@ -27,10 +27,13 @@ shopt -s histappend
 
 # update with remote changes before loading the remaining profile
 if [[ -d "$DOTFILES_BASEDIR" ]]; then
+    echo "Updating dotfiles"
     cd "$DOTFILES_BASEDIR"
     source "profiles/common/00_safety-zone.sh"
     GIT_SSH_COMMAND="ssh -i $HOME/.ssh/$(get_safe_value GITHUB_SSH_KEY)" git pull > /dev/null
     cd - > /dev/null
+else
+    echo "Unable to locate DOTFILES_BASEDIR: $DOTFILES_BASEDIR"
 fi
 
 # Use add-in scripts
