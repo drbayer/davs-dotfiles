@@ -8,4 +8,6 @@
     cod = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | awk -F'/' '{print $NF}')
     rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git com; git pull --rebase; git co $BRANCH; git pull --rebase; git merge master -m 'Merge branch master into $BRANCH'"
     aliases = config --get-regexp '^alias\\.'
+    file-history = log --follow -p --
+    fh = log --follow -p --
 
