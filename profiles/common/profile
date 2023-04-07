@@ -5,8 +5,11 @@ exit_bash() {
     cd "${DOTFILES_BASEDIR}"
     if [[ ! $(git status | grep 'nothing to commit') ]]; then
         echo "Committing changes to dotfiles before exit"
+        commit_msg="Auto-add changes to dotfiles on shell exit
+
+$(git status -b --untracked=all --porcelain)"
         git add .
-        git commit -m 'Auto-add changes to dotfiles on shell exit'
+        git commit -m "$commit_msg"
         git push
     fi
 }
