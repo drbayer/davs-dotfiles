@@ -9,5 +9,5 @@
     rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git com; git pull --rebase; git co $BRANCH; git pull --rebase; git merge master -m 'Merge branch master into $BRANCH'"
     aliases = config --get-regexp '^alias\\.'
     file-history = log --follow -p --
-    fh = log --follow -p --
+    fh = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s' --follow --
 
