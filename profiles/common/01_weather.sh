@@ -14,9 +14,9 @@ fi
 
 this_tty=$(tty)
 if [[ "$((${this_tty: -1} % 2))" -eq "0" ]]; then
-    curl -s http://wttr.in | head -17
+    curl wttr.in?1F
 else
-    curl -s http://wttr.in/Moon | head -23
+    curl wttr.in/Moon?F
 fi
 echo
 

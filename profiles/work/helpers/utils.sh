@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
+# source this script to enable the run_xbar_plugin function
+# function expects the xbar_env.py file to be in the same directory as the function script
+
 run_xbar_plugin() {
+    # Run xbar plugins from the command line more easily. Loads config values into ENV vars
+    # for xbar plugin configs
+    #
+    # Usage: run_xbar_plugin PLUGIN_NAME
+    # example: run_xbar_plugin gcn3
+    
     if [[ -z $1 ]]; then
         echo "Missing plugin name"
         return
