@@ -1,0 +1,6 @@
+#!/bin/sh
+
+: "${PI_SCALE=5}";: "${SCALE_ARG=$PI_SCALE}";u() { echo "Usage: ${0##*/} [-h] [-n scale]">&2;exit 1; }
+while getopts hn: f; do case "$f" in n)SCALE_ARG="$OPTARG";;*) u;esac;done
+if [ $SCALE_ARG -lt 20 ]; then PI_SCALE=20; else PI_SCALE=$SCALE_ARG; fi
+echo "scale=$PI_SCALE; 4*a(1)" | BC_LINE_LENGTH=$((${PI_SCALE}+4)) bc -l | cut -c 1-$((SCALE_ARG+2))
