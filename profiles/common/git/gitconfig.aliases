@@ -4,9 +4,9 @@
     co = checkout
     s = status
     p = push
-    l = !git log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s'
+    l = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s'
     cod = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | awk -F'/' '{print $NF}')
-    rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git com; git pull --rebase; git co $BRANCH; git pull --rebase; git merge master -m 'Merge branch master into $BRANCH'"
+    rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git cod; MAIN=$(git rev-parse --abbrev-ref HEAD); git pull --rebase; git co $BRANCH; git pull --rebase; git merge $MAIN -m 'Merge branch $MAIN into $BRANCH'"
     aliases = config --get-regexp '^alias\\.'
     file-history = log --follow -p --
     fh = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s' --follow --
