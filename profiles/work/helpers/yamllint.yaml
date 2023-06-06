@@ -1,0 +1,24 @@
+extends: default
+
+rules:
+  # 150 chars limit, don't fail if a line is longer
+  line-length:
+    max: 150
+    level: warning
+
+  # accept both     key:
+  #                   - item
+  #
+  # and             key:
+  #                 - item
+  indentation:
+    indent-sequences: whatever
+
+  # sometimes need more empty lines in jinja templates
+  empty-lines:
+    max: 4
+    level: warning
+
+  # don't use document-start
+  document-start:
+    present: false
