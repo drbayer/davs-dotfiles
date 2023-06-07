@@ -2,7 +2,7 @@
 # shellcheck disable=SC1091
 
 exit_bash() {
-    cd "${DOTFILES_BASEDIR}"
+    cd "${DOTFILES_BASEDIR}" || return
     if [[ ! $(git status | grep 'nothing to commit') ]]; then
         echo "Committing changes to dotfiles before exit"
         commit_msg="Auto-add changes to dotfiles on shell exit
@@ -66,3 +66,8 @@ fi
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# remove duplicates in PATH:
+PATH=$(echo ${PATH} | /usr/bin/awk -v RS=: -v ORS=: '!($0 in a) {a[$0]; print}')
+PATH="${PATH%:}"    # remove trailing colon
+export PATH
