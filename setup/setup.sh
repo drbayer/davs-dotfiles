@@ -7,7 +7,6 @@
 # as the script itself. Destination entries are relative to user's
 # home directory.
 
-# TODO install vim plugins
 # TODO install homebrew
 # TODO install hombebrew packages
 
@@ -239,6 +238,9 @@ done < <(tail -n +2 "${DEST_DIR}/setup/links.csv")
 for item in "${!links[@]}"; do
     link_item "${DEST_DIR}/${item}" "${HOME}/${links[$item]}"
 done
+
+# Install vim plugins
+grep -q vim-plug ~/.vim/autoload/plug.vim && vim -c PlugInstall +qa!
 
 exec -l ${SHELL}
 
