@@ -63,5 +63,13 @@ if !empty(glob("~/.bash.d/profiles/active/vimrc"))
     so ~/.bash.d/profiles/active/vimrc
 endif
 
+" Source any extra plugin files from the active bash profile
+if !empty(glob("~/.bash.d/profiles/active/vim"))
+    let include_list = globpath("~/.bash.d/profiles/active/vim/plugin", "*.vim", 0, 1)
+    for include_file in include_list
+        exe 'so' include_file
+    endfor
+endif
+
 runtime! ~/.vim/ftplugin/*.vim
 
