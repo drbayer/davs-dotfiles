@@ -239,8 +239,5 @@ for item in "${!links[@]}"; do
     link_item "${DEST_DIR}/${item}" "${HOME}/${links[$item]}"
 done
 
-# Install vim plugins
-grep -q vim-plug ~/.vim/autoload/plug.vim && vim -c PlugInstall +qa!
-
 exec -l ${SHELL}
 
