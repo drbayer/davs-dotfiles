@@ -1,8 +1,27 @@
 #!/usr/bin/env bash
 
-# source this script to enable the run_xbar_plugin function
-# function expects the xbar_env.py file to be in the same directory as the function script
+# source this script to enable the xbar functions
 
+list_xbar_plugins() {
+    # Find all installed xbar plugins
+
+    if [[ -z $2 ]]; then
+        DIR="${HOME}/Library/Application Support/xbar/plugins"
+    else
+        DIR="$2"
+    fi
+
+    for f in "${DIR}"/*.py; do
+        # remove extension and timing from filename
+        f="${f%%.*}"
+        # remove leading digits for community plugins
+        f="${f##[0-9]*-}"
+        basename "$f"
+    done
+}
+
+
+# this function expects the xbar_env.py file to be in the same directory as the function script
 run_xbar_plugin() {
     # Run xbar plugins from the command line more easily. Loads config values into ENV vars
     # for xbar plugin configs
