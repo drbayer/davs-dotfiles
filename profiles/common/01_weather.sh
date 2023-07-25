@@ -14,6 +14,8 @@ fi
 
 this_tty=$(tty)
 if [[ "$((${this_tty: -1} % 2))" -eq "0" ]]; then
+    # parameter "1" limits output to today
+    # parameter "F" removes the "Follow" output
     curl wttr.in?1F
 else
     curl wttr.in/Moon?F
