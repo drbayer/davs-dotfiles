@@ -13,7 +13,7 @@
 BACKUP_ALL=n
 ACCEPT_ALL=n
 DEST_DIR="${HOME}/.bash.d"
-GIT_REPO=git@github.com:drbayer/dotfiles.git
+GIT_REPO=git@github.com:drbayer/davs-dotfiles.git
 PROFILE=
 
 usage() {
