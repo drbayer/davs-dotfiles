@@ -158,7 +158,7 @@ setup_git() {
         gitdir="${DEST_DIR}/profiles/${profile}/git"
         if [[ -d "${gitdir}" ]]; then
             for includefile in "${gitdir}"/gitconfig.*; do
-                git config --global include.path "$gitdir/$includefile"
+                git config --global --add include.path "$gitdir/$includefile"
             done
         fi
     done
