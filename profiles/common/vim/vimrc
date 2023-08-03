@@ -6,7 +6,9 @@ if !empty(glob("~/.vim/plugins.vim"))
 endif
 
 syntax on
-set termguicolors
+if v:version > 704
+    set termguicolors
+endif
 
 set fileformat=unix
 set encoding=UTF-8
@@ -19,13 +21,20 @@ set smarttab
 set autoindent
 set smartindent
 set nowrap
-set listchars=tab:>-i,eol:$,extends:>,precedes:<
+
+if version > 704
+    set listchars=tab:>-i,eol:$,extends:>,precedes:<
+endif
 
 set number
 set ruler
 "set cursorline
 "hi CursorLine cterm=NONE ctermbg=darkgrey
-set signcolumn=auto
+
+if v:version > 704
+    set signcolumn=auto
+endif
+
 set showcmd
 set showmatch
 
