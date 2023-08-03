@@ -15,6 +15,7 @@ ACCEPT_ALL=n
 DEST_DIR="${HOME}/.bash.d"
 GIT_REPO=git@github.com:drbayer/davs-dotfiles.git
 PROFILE=
+SSH_KEY=
 
 usage() {
     echo "Usage: ${0##*/} [-b] [-d DEST_DIR] [-y] [-h]"
@@ -154,6 +155,13 @@ setup_profile() {
 }
 
 setup_git() {
+    # Explicitly set which ssh key to use for dotfiles
+    # If you have multiple github accounts (home & work), make sure to use the right key
+    old_dir=$(pwd)
+    cd "${DEST_DIR}"
+    git config core.sshCommand "ssh -i $SSH_KEY"
+    cd "$old_dir"
+
     for profile in common active; do
         gitdir="${DEST_DIR}/profiles/${profile}/git"
         if [[ -d "${gitdir}" ]]; then
@@ -198,6 +206,7 @@ load_ssh_key() {
             done
             read -r ssh_key
             ssh-add "${keys[ssh_key]}"
+            SSH_KEY="${keys[ssh_key]}"
         fi
     else
         echo "Can't locate any SSH keys. Unable to clone git repo."
