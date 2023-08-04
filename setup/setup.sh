@@ -157,10 +157,9 @@ setup_profile() {
 setup_git() {
     # Explicitly set which ssh key to use for dotfiles
     # If you have multiple github accounts (home & work), make sure to use the right key
-    old_dir=$(pwd)
-    cd "${DEST_DIR}"
-    git config core.sshCommand "ssh -i $SSH_KEY"
-    cd "$old_dir"
+    # Set as an ENV var to accommodate older versions of git
+    grep -q "export GITHUB_SSH_COMMAND.*${SSH_KEY}" "profiles/${PROFILE}/01_env.sh" ||
+        echo "export GITHUB_SSH_COMMAND='ssh -i ${SSH_KEY}'" >> "profiles/${PROFILE}/01_env.sh"
 
     for profile in common active; do
         gitdir="${DEST_DIR}/profiles/${profile}/git"
