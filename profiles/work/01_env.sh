@@ -9,3 +9,4 @@ export JAVA_VERSION='11.0'
 export GIT_REPO_DIR=${HOME}/repos
 
 setJava $JAVA_VERSION
+export GITHUB_SSH_COMMAND='ssh -i ~/.ssh/github-drbayer'
