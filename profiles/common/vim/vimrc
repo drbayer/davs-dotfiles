@@ -9,6 +9,7 @@ syntax on
 if v:version > 704
     set termguicolors
 endif
+let rainbow_active=1
 
 set fileformat=unix
 set encoding=UTF-8

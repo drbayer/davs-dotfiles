@@ -18,7 +18,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'frazrepo/vim-rainbow'
