@@ -13,6 +13,10 @@ if [[ -f "$current_profile/helpers/utils.sh" ]]; then
     source "$current_profile/helpers/utils.sh"
 fi
 
+if [[ -f "$current_profile/helpers/k8s_utils.sh" ]]; then
+    source "$current_profile/helpers/k8s_utils.sh"
+fi
+
 if [[ -f "$current_profile/helpers/jira_todoist.py" ]]; then
     "$current_profile/helpers/jira_todoist.py"
 fi

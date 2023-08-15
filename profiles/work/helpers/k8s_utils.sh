@@ -6,10 +6,8 @@
 PIDFILE=/tmp/prodpid
 
 k8s_login() {
-    fabric=${1:-prod-lor1}
+    fabric=${1:-prod-lva1}
     cluster=${2:-k8s-0}
-
-    echo $cluster && exit
 
     kubectl login -f $fabric -t $cluster
     sshuttle --daemon --pidfile $PIDFILE -r ltx1-shell07.prod.linkedin.com:22 \
