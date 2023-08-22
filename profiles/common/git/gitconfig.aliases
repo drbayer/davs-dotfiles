@@ -1,13 +1,13 @@
 [alias]
-    com = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | awk -F'/' '{print $NF}')
-    cob = checkout -b
-    co = checkout
-    s = status
-    p = push
-    l = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s'
-    cod = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | awk -F'/' '{print $NF}')
-    rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git cod; MAIN=$(git rev-parse --abbrev-ref HEAD); git pull --rebase; git co $BRANCH; git pull --rebase; git merge $MAIN -m 'Merge branch $MAIN into $BRANCH'"
     aliases = config --get-regexp '^alias\\.'
-    file-history = log --follow -p --
+    co = checkout
+    cob = checkout -b
+    cod = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | awk -F'/' '{print $NF}')
+    com = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | awk -F'/' '{print $NF}')
     fh = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s' --follow --
+    file-history = log --follow -p --
+    l = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s'
+    p = push
+    rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git cod; MAIN=$(git rev-parse --abbrev-ref HEAD); git pull --rebase; git co $BRANCH; git pull --rebase; git rebase $MAIN"
+    s = status
 
