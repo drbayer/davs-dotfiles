@@ -56,7 +56,7 @@ echo
 
 
 if [[ -f "${DOTFILES_BASEDIR}/profiles/active/profile.sh" ]]; then
-    echo "Loading ${PROFILE:=active} profile"
+    echo "Loading ${DOTFILES_PROFILE:=active} profile"
     . "${DOTFILES_BASEDIR}/profiles/active/profile.sh"
 fi
 

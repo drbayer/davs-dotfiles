@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # env vars
 
-export PROFILE=work
+export DOTFILES_PROFILE=work
 
 export LI_FABRICS='prod-lor1 prod-ltx1 prod-lva1'
 export VOYAGER_SRE=$(get_safe_value TEAM_MEMBERS)
