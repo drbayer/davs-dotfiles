@@ -7,6 +7,8 @@ exit_bash() {
         echo "Committing changes to dotfiles before exit"
         commit_msg="Auto-add changes to dotfiles on shell exit
 
+Hostname: $(hostname -s)
+
 $(git status -b --untracked=all --porcelain)"
         git add .
         git commit -m "$commit_msg"
