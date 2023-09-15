@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1091
 
+
 exit_bash() {
     cd "${DOTFILES_BASEDIR}" || return
     if [[ ! $(git status | grep 'nothing to commit') ]]; then
