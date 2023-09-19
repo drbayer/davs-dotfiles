@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # env vars
 
+export DOTFILES_COMMIT='true'       # default to commit dotfiles changes on exiting bash
 export EDITOR='/usr/bin/vim'
 export PS1='[\u@\h: \w]\$ '
 export HISTSIZE=50000

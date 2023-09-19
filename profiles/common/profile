@@ -3,6 +3,7 @@
 
 
 exit_bash() {
+    [[ "${DOTFILES_COMMIT}" == "true" ]] || return
     cd "${DOTFILES_BASEDIR}" || return
     if [[ ! $(git status | grep 'nothing to commit') ]]; then
         echo "Committing changes to dotfiles before exit"

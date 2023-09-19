@@ -1,3 +1,4 @@
+# shellcheck disable=SC3010
 
 new_profile() {
   local new_profile="$1"
@@ -20,7 +21,9 @@ switch_profile() {
   if [[ -z "$selected_profile" ]]; then
     declare -a profiles
     for p in $(ls "${DOTFILES_BASEDIR}/profiles" | egrep -v 'common|active'); do
-      profiles+=("$p")
+        if [[ -d "${DOTFILES_BASEDIR}/profiles/${p}" ]]; then
+            profiles+=("$p")
+        fi
     done
 
     echo "Select new profile from the following:"
