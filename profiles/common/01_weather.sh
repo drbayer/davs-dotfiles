@@ -13,12 +13,12 @@ if [[ ! $(which curl) ]]; then
 fi
 
 this_tty=$(tty)
-if [[ "$((${this_tty: -1} % 2))" -eq "0" ]]; then
+if [[ "$((${this_tty: -3} % 2))" -eq "0" ]]; then
     # parameter "1" limits output to today
     # parameter "F" removes the "Follow" output
-    curl wttr.in?1F
+    curl -s --max-time 1 wttr.in?1Fu
 else
-    curl wttr.in/Moon?F
+    curl -s --max-time 3 wttr.in/Moon?F
 fi
 echo
 
