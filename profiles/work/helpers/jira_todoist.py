@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+import sys
+
+
+if sys.version_info < (3,9):
+    sys.exit("jira_todoist: Python 3.9 or greater required")
+
+
 from getpass import getuser
 from jira import JIRA
 from todoist_api_python.api import TodoistAPI
