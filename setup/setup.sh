@@ -172,8 +172,8 @@ setup_git() {
     # If you have multiple github accounts (home & work), make sure to use the right key
     # Set as an ENV var to accommodate older versions of git
     # Also set up any git include files from your profile
-    grep -q "export GITHUB_SSH_COMMAND.*${SSH_KEY}" "profiles/${PROFILE}/01_env.sh" ||
-        echo "export GITHUB_SSH_COMMAND='ssh -i ${SSH_KEY}'" >> "profiles/${PROFILE}/01_env.sh"
+    grep -q "export GITHUB_SSH_COMMAND.*${SSH_KEY}" "${DEST_DIR}/profiles/${PROFILE}/01_env.sh" ||
+        echo "export GITHUB_SSH_COMMAND='ssh -i ${SSH_KEY}'" >> "${DEST_DIR}/profiles/${PROFILE}/01_env.sh"
 
     for profile in common active; do
         gitdir="${DEST_DIR}/profiles/${profile}/git"
