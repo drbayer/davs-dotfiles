@@ -55,7 +55,7 @@ backup() {
     local backup="$1"
     local item="$2"
 
-    if [[ ! -L "$item" ]] && [[ "$backup" != "y" ]]; then
+    if [[ "$backup" != "y" ]]; then
         backup='Y'
         local prompt="Backup $item before proceeding [Y|n]? "
         read -rp "$prompt" backup
@@ -76,14 +76,17 @@ link_item() {
     if [[ -e "$dst"  ]]; then
         if [[ $(overwrite "$ACCEPT_ALL" "$dst") == "y" ]]; then
             backup "$BACKUP_ALL" "$dst"
-            if [[ -L "$dst" ]]; then
-                unlink "$dst"
-            fi
+            [[ -L "$dst" ]] && unlink "$dst"
+            [[ -e "$dst" ]] && rm -rf "$dst"
         else
             return 1
         fi
     fi
 
+    # shellcheck disable=SC2076
+    if [[ ! "$dst" =~ "$HOME" ]]; then
+        dst="${HOME}/${dst}"
+    fi
     symlink_basedir=$(echo "$dst" | rev | cut -d / -f 2- | rev)
     if [[ ! -d "$symlink_basedir" ]]; then
         mkdir -p "$symlink_basedir"
@@ -172,14 +175,17 @@ setup_git() {
     # If you have multiple github accounts (home & work), make sure to use the right key
     # Set as an ENV var to accommodate older versions of git
     # Also set up any git include files from your profile
-    grep -q "export GITHUB_SSH_COMMAND.*${SSH_KEY}" "${DEST_DIR}/profiles/${PROFILE}/01_env.sh" ||
-        echo "export GITHUB_SSH_COMMAND='ssh -i ${SSH_KEY}'" >> "${DEST_DIR}/profiles/${PROFILE}/01_env.sh"
+
+    if [[ -d "${DEST_DIR}/profiles/${PROFILE}" ]]; then
+        grep -q "export GITHUB_SSH_COMMAND.*${SSH_KEY}" "${DEST_DIR}/profiles/${PROFILE}/01_env.sh" ||
+            echo "export GITHUB_SSH_COMMAND='ssh -i ${SSH_KEY}'" >> "${DEST_DIR}/profiles/${PROFILE}/01_env.sh"
+    fi
 
     for profile in common active; do
         gitdir="${DEST_DIR}/profiles/${profile}/git"
         if [[ -d "${gitdir}" ]]; then
             for includefile in "${gitdir}"/gitconfig.*; do
-                grep -q "path = $includefile" ||
+                git config --global --get-all include.path | grep -q "path = $includefile" ||
                     git config --global --add include.path "$includefile"
             done
         fi
