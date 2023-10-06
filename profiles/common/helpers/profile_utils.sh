@@ -50,6 +50,7 @@ switch_profile() {
     fi
     ln -s "${DOTFILES_BASEDIR}/profiles/${selected_profile}" "${DOTFILES_BASEDIR}/profiles/active"
   else
-    echo "Exiting without changing profile"
+    echo "Exiting without changing profile" >&2
   fi
+  echo "$selected_profile"
 }
