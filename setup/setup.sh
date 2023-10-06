@@ -151,7 +151,7 @@ setup_profile() {
 
     # shellcheck disable=SC1091
     source "${DEST_DIR}/profiles/common/helpers/profile_utils.sh"
-    PROFILE=switch_profile "$profile"
+    PROFILE=$(switch_profile "$profile")
     
     setup_git
 }
