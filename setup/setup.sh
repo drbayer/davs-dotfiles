@@ -73,8 +73,6 @@ link_item() {
     local src="$1"
     local dst="$2"
     
-    # shellcheck disable=SC2028
-    echo "source: $src\ndest: $dst"
     if [[ -e "$dst"  ]]; then
         if [[ $(overwrite "$ACCEPT_ALL" "$dst") == "y" ]]; then
             backup "$BACKUP_ALL" "$dst"
