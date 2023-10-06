@@ -96,9 +96,11 @@ link_item() {
 }
 
 install_git() {
+    # Install git if not already there
     if [[ ! $(which git) ]]; then
         os=$(uname)
         if [[ "$os" == "Darwin" ]]; then
+            # macOS will auto-install git when you run git commands
             git --version > /dev/null 2>&1
             until [[ $(which git) ]]; do
                 sleep 10
@@ -115,6 +117,7 @@ install_git() {
 }
 
 clone_repo() {
+    # Pull the dotfiles repo. Make sure all the necessary things are in place first.
     repo="$1"
     dest="$2"
 
@@ -145,6 +148,7 @@ clone_repo() {
 }
 
 setup_profile() {
+    # Select the profile and set up git accordingly
     profile="$1"
 
     # shellcheck disable=SC1091
@@ -158,6 +162,7 @@ setup_git() {
     # Explicitly set which ssh key to use for dotfiles
     # If you have multiple github accounts (home & work), make sure to use the right key
     # Set as an ENV var to accommodate older versions of git
+    # Also set up any git include files from your profile
     grep -q "export GITHUB_SSH_COMMAND.*${SSH_KEY}" "profiles/${PROFILE}/01_env.sh" ||
         echo "export GITHUB_SSH_COMMAND='ssh -i ${SSH_KEY}'" >> "profiles/${PROFILE}/01_env.sh"
 
@@ -173,6 +178,8 @@ setup_git() {
 }
 
 setup_basedir() {
+    # Dotfiles needs to know where to find all the things so add
+    # DOTFILES_BASEDIR env var to .bashrc to get it early
     bashrc="${HOME}/.bashrc"
 
     if [[ -f "$bashrc" ]]; then
@@ -188,6 +195,7 @@ setup_basedir() {
 }
 
 load_ssh_key() {
+    # Select the ssh key to use for the dotfiles repo
     if [[ -d "${HOME}/.ssh" ]]; then
         declare -a keys
         for public_key in "${HOME}"/.ssh/*.pub; do
