@@ -151,8 +151,19 @@ setup_profile() {
 
     # shellcheck disable=SC1091
     source "${DEST_DIR}/profiles/common/helpers/profile_utils.sh"
-    PROFILE=$(switch_profile "$profile")
-    
+    if [[ -n "$profile" ]] && [[ -d "${DEST_DIR}/profiles/${profile}" ]]; then
+        PROFILE="$profile"
+    else
+        PROFILE=$(select_profile true)
+    fi
+
+    if [[ -d "${DEST_DIR}/profiles/${PROFILE}" ]]; then
+        switch_profile "$PROFILE"
+    else
+        echo "Setup requires a valid profile to continue."
+        usage
+    fi
+
     setup_git
 }
 
