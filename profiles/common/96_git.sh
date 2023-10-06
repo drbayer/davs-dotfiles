@@ -1,4 +1,4 @@
-# shellcheck disable=SC2148
+# shellcheck disable=SC2148,SC1091,SC3010
 
 # git prompt & completion
 
@@ -8,20 +8,20 @@ if [[ $(which git) ]]; then
     if [[ $os == "macos" ]]; then
     
         if [[ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]]; then
-            source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+            . "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
         fi
         
         if [[ -f "$(brew --prefix)/etc/bash_completion" ]]; then
-          source "$(brew --prefix)/etc/bash_completion"
+          . "$(brew --prefix)/etc/bash_completion"
         fi
 
     else
         
         if [[ -f "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
-            source "$HOME/.bash-git-prompt/gitprompt.sh"
+            . "$HOME/.bash-git-prompt/gitprompt.sh"
         else
             git clone https://github.com/magicmonty/bash-git-prompt.git "$HOME/.bash-git-prompt" --depth=1
-            source "$HOME/.bash-git-prompt/gitprompt.sh"
+            . "$HOME/.bash-git-prompt/gitprompt.sh"
         fi
     fi
     
@@ -33,7 +33,7 @@ if [[ $(which git) ]]; then
         gitdir="${DOTFILES_BASEDIR}/profiles/${profile}/git"
         if [[ -d "${gitdir}" ]]; then
             for includefile in "${gitdir}"/gitconfig.*; do
-                grep -q "path = $includefile" ~/.gitconfig ||
+                git config --global --get-all include.path | grep -q "$includefile" ||
                     git config --global --add include.path "$includefile"
             done
         fi
