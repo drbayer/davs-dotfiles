@@ -44,7 +44,7 @@ switch_profile() {
   fi
 
   if [[ ! -z "$selected_profile" ]] && [[ -d "${DOTFILES_BASEDIR}/profiles/${selected_profile}" ]]; then
-    echo "Switching to profile ${selected_profile}"
+    echo "Switching to profile ${selected_profile}" >&2
     if [[ -e "${DOTFILES_BASEDIR}/profiles/active" ]]; then
       unlink "${DOTFILES_BASEDIR}/profiles/active"
     fi
