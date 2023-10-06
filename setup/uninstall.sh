@@ -92,7 +92,7 @@ remove_git_includes() {
         if [[ -d "${gitdir}" ]]; then
             for includefile in "${gitdir}"/gitconfig.*; do
                 grep -q "path = $includefile" ~/.gitconfig &&
-                    git config --global --fixed-value --unset include.path "$includefile"
+                    git config --global --unset include.path "$includefile"
                 done
         fi
     done
