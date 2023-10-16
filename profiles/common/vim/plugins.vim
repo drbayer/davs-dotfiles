@@ -31,11 +31,11 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 set wildignore+=*.DS_Store
-if getcwd() !~ 'ingraphs-dashboards' && getcwd() !~ 'range'
+if getcwd() =~ 'range-acl' || getcwd() !~ 'ingraphs-dashboards' && getcwd() !~ 'range'
     autocmd VimEnter * NERDTree
     autocmd VimEnter * wincmd p
-    cnoremap Q qa
 endif
+cnoremap Q qa
 autocmd BufWinEnter * silent NERDTreeMirror
 nmap <F8> :TagbarToggle<CR>
 
