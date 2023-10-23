@@ -5,6 +5,7 @@
 exit_bash() {
     [[ "${DOTFILES_COMMIT}" == "true" ]] || return
     cd "${DOTFILES_BASEDIR}" || return
+    # shellcheck disable=SC2143
     if [[ ! $(git status | grep 'nothing to commit') ]]; then
         echo "Committing changes to dotfiles before exit"
         commit_msg="Auto-add changes to dotfiles on shell exit
@@ -22,6 +23,7 @@ trap exit_bash EXIT
 
 BASH_VERSION=$($BASH --version | awk '/bash/ {print $4}')
 BASH_MAJOR_VERSION=$(echo "$BASH_VERSION" | awk -F'.' '{print $1}')
+CURRENT_PROFILE="${HOME}/.bash.d/profiles/active"
 
 if [[ $BASH_MAJOR_VERSION -ge "4" ]]; then
     shopt -s globstar
@@ -35,9 +37,11 @@ shopt -s histappend
 # update with remote changes before loading the remaining profile
 if [[ -d "$DOTFILES_BASEDIR" ]]; then
     echo "Updating dotfiles"
+    # shellcheck disable=SC2164
     cd "$DOTFILES_BASEDIR"
     source "profiles/common/00_safety-zone.sh"
     GIT_SSH_COMMAND="ssh -i $HOME/.ssh/$(get_safe_value GITHUB_SSH_KEY)" git pull > /dev/null
+    # shellcheck disable=SC2103,SC2164
     cd - > /dev/null
 else
     echo "Unable to locate DOTFILES_BASEDIR: $DOTFILES_BASEDIR"
@@ -48,6 +52,7 @@ re='[0-9]{2}_.*\.sh$'
 
 for script in "${DOTFILES_BASEDIR}"/profiles/common/* "${DOTFILES_BASEDIR}"/profiles/active/*; do
     if [[ $script =~ $re ]]; then
+        # shellcheck source=/dev/null
         source "${script}"
     fi
 done
@@ -68,10 +73,14 @@ if [[ -f "${DOTFILES_BASEDIR}/profiles/common/helpers/profile_utils.sh" ]]; then
     source "${DOTFILES_BASEDIR}/profiles/common/helpers/profile_utils.sh"
 fi
 
+if [[ -f "$CURRENT_PROFILE/helpers/xbar_utils.sh" ]]; then
+    source "$CURRENT_PROFILE/helpers/xbar_utils.sh"
+fi
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # remove duplicates in PATH:
-PATH=$(echo ${PATH} | /usr/bin/awk -v RS=: -v ORS=: '!($0 in a) {a[$0]; print}')
+PATH=$(echo -n "${PATH}" | /usr/bin/awk -v RS=: -v ORS=: '!($0 in a) {a[$0]; print}')
 PATH="${PATH%:}"    # remove trailing colon
 export PATH
