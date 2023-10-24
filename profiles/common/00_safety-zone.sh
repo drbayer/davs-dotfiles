@@ -6,6 +6,7 @@ get_safe_value() {
     values_file="${DOTFILES_BASEDIR}/safety-zone/safety-zone_values.ini"
 
     if [[ ! -f "$values_file" ]] || [[ -z key ]]; then
+        source "${DOTFILES_BASEDIR}/profiles/common/00_utils.sh"
         warn "Unable to locate safety-zone values file: $values_file" 1>&2
         return
     else
