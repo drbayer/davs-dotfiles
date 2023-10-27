@@ -16,8 +16,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+" Plug 'scrooloose/syntastic'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -27,6 +28,7 @@ Plug 'cohama/lexima.vim'
 
 call plug#end()
 
+" NERDTree config
 nnoremap <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
@@ -38,6 +40,12 @@ endif
 cnoremap Q qa
 autocmd BufWinEnter * silent NERDTreeMirror
 nmap <F8> :TagbarToggle<CR>
+
+" ALE config
+let g:ale_fixers = {
+\    '*': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+\   'yaml': ['yamlfix', 'yamlfmt', 'remove_trailing_lines', 'trim_whitespace']
+\}
 
 if !empty(glob("$DOTFILES_BASEDIR/profiles/common/flake8"))
     let g:syntastic_python_flake8_args = "--append-config $DOTFILES_BASEDIR/profiles/common/flake8"

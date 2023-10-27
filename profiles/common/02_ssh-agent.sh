@@ -6,7 +6,6 @@
 # Set the following variable to the keys you want to load
 # in order to avoid warnings or manual acceptance.
 SSH_KEYS_TO_LOAD="$(get_safe_value SSH_KEYS_TO_LOAD)"
-SSH_KEYS_TO_LOAD="$SSH_KEYS_TO_LOAD dbayer-github davids-desktop"
 
 find_keys() {
     local keys=
@@ -59,7 +58,7 @@ if [[ -x "$(which keychain)" ]]; then
 
     # shellcheck disable=SC2086
     keychain $ssh_keys
-    # shellcheck disable=SC2046
+    # shellcheck disable=SC2046,SC1090
     . ~/.keychain/$(hostname)-sh
 
 fi
