@@ -73,8 +73,8 @@ if [[ -f "${DOTFILES_BASEDIR}/profiles/common/helpers/profile_utils.sh" ]]; then
     source "${DOTFILES_BASEDIR}/profiles/common/helpers/profile_utils.sh"
 fi
 
-if [[ -f "$CURRENT_PROFILE/helpers/xbar_utils.sh" ]]; then
-    source "$CURRENT_PROFILE/helpers/xbar_utils.sh"
+if [[ -f "${DOTFILES_BASEDIR}/profiles/common/helpers/xbar_utils.sh" ]]; then
+    source "${DOTFILES_BASEDIR}/profiles/common/helpers/xbar_utils.sh"
 fi
 
 export VOLTA_HOME="$HOME/.volta"
