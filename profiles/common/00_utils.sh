@@ -58,7 +58,7 @@ get_package_manager() {
     fi
 
     for pm in $package_managers; do
-        if [[ $(which "$pm") ]]; then
+        if [[ $(command -v "$pm") ]]; then
             pkg_mgr=$pm
             break
         fi
