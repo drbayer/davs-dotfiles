@@ -28,3 +28,6 @@ alias gmerge='gitMerge'
 # Python
 alias python='python3'
 alias pip='pip3'
+
+# Kubernetes
+alias kubens='kubectl config set-context --current --namespace '    # set current namespace
