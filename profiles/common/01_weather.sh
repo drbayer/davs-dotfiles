@@ -18,7 +18,7 @@ if [[ "$((${this_tty: -3} % 2))" -eq "0" ]]; then
     # parameter "F" removes the "Follow" output
     curl -s --max-time 1 wttr.in?1Fu
 else
-    curl -s --max-time 3 wttr.in/Moon?F
+    curl -s --max-time 3 www.wttr.in/Moon?F
 fi
 echo
 

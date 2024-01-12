@@ -52,7 +52,6 @@ re='[0-9]{2}_.*\.sh$'
 
 for script in "${DOTFILES_BASEDIR}"/profiles/common/* "${DOTFILES_BASEDIR}"/profiles/active/*; do
     if [[ $script =~ $re ]]; then
-        echo "Sourcing $script"
         # shellcheck source=/dev/null
         source "${script}"
     fi
