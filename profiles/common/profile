@@ -77,9 +77,13 @@ if [[ -f "${DOTFILES_BASEDIR}/profiles/common/helpers/xbar_utils.sh" ]]; then
     source "${DOTFILES_BASEDIR}/profiles/common/helpers/xbar_utils.sh"
 fi
 
-# Add $GOPATH/bin to PATH after loading profile to allow different GOPATH values by profile
-if [[ -n $GOPATH ]]; then
+# Add go binary dir to PATH after loading profile to allow different values by profile
+if [[ -n $GOBIN ]]; then
+    export PATH="$PATH:$GOBIN"
+elif [[ -n $GOPATH ]]; then
     export PATH="$PATH:$GOPATH/bin"
+else
+    export PATH="$PATH:$HOME/go/bin"
 fi
 
 # remove duplicates in PATH:
