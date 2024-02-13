@@ -77,8 +77,10 @@ if [[ -f "${DOTFILES_BASEDIR}/profiles/common/helpers/xbar_utils.sh" ]]; then
     source "${DOTFILES_BASEDIR}/profiles/common/helpers/xbar_utils.sh"
 fi
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# Add $GOPATH/bin to PATH after loading profile to allow different GOPATH values by profile
+if [[ -n $GOPATH ]]; then
+    export PATH="$PATH:$GOPATH/bin"
+fi
 
 # remove duplicates in PATH:
 PATH=$(echo -n "${PATH}" | /usr/bin/awk -v RS=: -v ORS=: '!($0 in a) {a[$0]; print}')
