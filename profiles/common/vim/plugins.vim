@@ -50,3 +50,6 @@ let g:ale_fixers = {
 if !empty(glob("$DOTFILES_BASEDIR/profiles/common/flake8"))
     let g:syntastic_python_flake8_args = "--append-config $DOTFILES_BASEDIR/profiles/common/flake8"
 endif
+
+" CSV don't obfuscate field delimiters
+let g:csv_no_conceal = 1

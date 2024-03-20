@@ -1,6 +1,7 @@
 source,destination
 profiles/common/profile,.profile
-profiles/common/flake8,.flake8
+profiles/common/linters/flake8,.flake8
+profiles/common/linters/yamllint,.yamllint
 profiles/common/vim/vimrc,.vimrc
 profiles/common/vim/plugin,.vim/plugin
 profiles/common/vim/autoload,.vim/autoload
