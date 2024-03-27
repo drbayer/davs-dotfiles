@@ -42,10 +42,14 @@ run_xbar_plugin() {
         DIR="$2"
     fi
 
-    SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+    if ! command -v jq &> /dev/null; then
+        echo "Unable to locate 'jq' command. Install before continuing."
+        return 1
+    fi
 
-    export_vars=$(python "$SCRIPT_DIR"/xbar_env.py "$PLUGIN")
-    eval $export_vars
+    export_vars=$(jq -r 'to_entries | map("export \(.key)=\(.value|tostring)") | .[]' "$DIR"/*"$PLUGIN"*.py.vars.json)
+    #shellcheck disable=SC2086
+    eval $export_vars 
 
     PLUGIN_SCRIPT=$(ls "$DIR"/*"$PLUGIN"*.py)
     python "$PLUGIN_SCRIPT"
