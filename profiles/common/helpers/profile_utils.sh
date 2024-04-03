@@ -37,7 +37,7 @@ select_profile() {
       selected_profile=abort
     elif [[ "$profile_num" == "n" ]]; then
       read -rp "Enter new profile name: " selected_profile >&2
-      new_profile $selected_profile
+      new_profile "$selected_profile"
     else
       selected_profile="${profiles[$profile_num]}"
     fi

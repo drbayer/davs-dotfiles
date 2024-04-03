@@ -28,7 +28,7 @@ warn() {
     RED='\033[1;91m'
     NC='\033[0m'
 
-    echo -e "${RED}Warning${NC}: ${message}"
+    echo -e "${RED}Warning${NC}: ${message}" 1>&2
 }
 
 get_os() {

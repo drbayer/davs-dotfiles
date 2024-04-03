@@ -148,13 +148,15 @@ clone_repo() {
     git clone "$repo" "$dest"
 }
 
+setup_safety_zone () {
+    create_safe_values_file
+}
+
 setup_profile() {
     # Select the profile and set up git accordingly
     profile="$1"
 
-    # shellcheck disable=SC1091
-    source "${DEST_DIR}/profiles/common/helpers/profile_utils.sh"
-    if [[ -n "$profile" ]] && [[ -d "${DEST_DIR}/profiles/${profile}" ]]; then
+    if [[ ! -z "$profile" ]] && [[ -d "${DEST_DIR}/profiles/${profile}" ]]; then
         PROFILE="$profile"
     else
         PROFILE=$(select_profile true)
@@ -207,6 +209,7 @@ setup_basedir() {
         touch "$bashrc"
         echo "export DOTFILES_BASEDIR=${DEST_DIR}" >> "$bashrc"
     fi
+    export DOTFILES_BASEDIR="${DEST_DIR}"
 }
 
 load_ssh_key() {
@@ -254,10 +257,20 @@ while getopts :ybd:g:p: FLAG; do
     esac
 done
 
+# Update path file here to prevent inadvertently using /bin/bash instead of /opt/homebrew/bin/bash
+export PATH=/opt/homebrew/bin:$PATH
 export DOTFILES_BASEDIR="$DEST_DIR"
+
 clone_repo "$GIT_REPO" "$DEST_DIR"
-setup_profile "$PROFILE"
+
+# shellcheck disable=SC1091
+source "${DEST_DIR}/profiles/common/helpers/profile_utils.sh"
+# shellcheck disable=SC1091
+source "${DEST_DIR}/profiles/common/00_safety-zone.sh"
+
 setup_basedir
+setup_profile "$PROFILE"
+setup_safety_zone
 
 declare -A links
 while IFS=, read -r source destination; do
