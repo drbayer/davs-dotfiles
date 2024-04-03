@@ -10,7 +10,7 @@ new_profile() {
     if [[ -d "${DOTFILES_BASEDIR}/profiles/${new_profile}" ]]; then
       echo "Profile ${new_profile} already exists" 1>&2
     else
-      echo "Creating new profile directory"
+      echo "Creating new profile directory" 1>&2
       mkdir "${DOTFILES_BASEDIR}/profiles/${new_profile}"
     fi
   fi
