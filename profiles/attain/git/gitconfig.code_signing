@@ -1,0 +1,12 @@
+[user]
+  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDzeNx+ybRB+Na14EtEkG+lLWQ0kBzio1XX3nRe8J3+rgNd9RUOSoxlTH1HDYopZFIe/uRPgB3NvYobDI6oI/7e40pEXV/TrduihL7rAbzTPt9tZqVM7fqM6Sj24k6GF6blHMzCRgkA/LHip6j6EVRAjm4W1EL0N/U1t+lPV3XS5Lr0jlK4LdBuCKdL4VhOvMXV+jr7iou4Q60I3dxImoJhGnjruyWVO65cmYYkZ5QpLBsXe9I7Z5f/PfQpfK9GrvQ75zREfn1h/WU3CjqM6cQuGXUTGX50f+Dk/byVb1e/vCEzuwO/IUZqTs+K1uqy/abqmmEjRnNAkXjSDeuUD7rGK5MvM8Yt+RSl8G6tsCMm33E0+y8nfKtM+d7/2HVpa8TPlU48jlQimsy2x5jJCFziWfC1RaoyDGEcr1aR4nXNZKra8SYGszuumD7iMa4lvmllnLY+U0GrUXDPXsG/O6Ff8NXTnxHvMS7ktn3h9O8twfBeMFO2L0RueHn/LVW0LWHOPRJV5pWRg+6cFC0duoKGe3QBEc7efj00zhjxHdA43I1YGbsafUeb9eJ2vYMT7iy9FWLijrRqeev0/VYd6RQ4b+lvVtNyfMM3JwH+PLkhwReyCTh8RaxwVYX8eJ13XUOmnWg1lZK2weAqFcpVr+IRwWMPV+mTk+K1UeIM0XpRbw==
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
