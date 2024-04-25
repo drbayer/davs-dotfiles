@@ -20,6 +20,19 @@ gconfig() {
         gcloud config configurations list --format json | jq -r '.[] | .name'
     }
 
+    describe() {
+        local this_env=$1
+        if [[ -z this_env ]]; then
+            this_env=$(current)
+        fi
+        gcloud config configurations describe $this_env
+    }
+
+    help() {
+        local f=$(basename "$0")
+        echo $f
+    }
+
 
     case $1 in
         current)    current
@@ -28,7 +41,9 @@ gconfig() {
                     ;;
         list)       list
                     ;;
-        *)          echo "Nothing to see here."
+        describe)   describe $2
+                    ;;
+        *)          help
                     ;;
     esac
 }
