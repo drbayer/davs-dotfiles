@@ -4,16 +4,24 @@ gconfig() {
 
     # Print the active gcloud configuration
     current() {
-        echo "$1"
         if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+            echo "Usage: gconfig current"
+            echo
             echo "Print the currently active gcloud configuration name"
-            exit
+            return
         fi
         gcloud config configurations list | awk '/True/ {print $1}'
     }
 
     # Change to a different gcloud configuration
     switch() {
+        if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+            echo "Usage: gconfig switch [CONFIG]"
+            echo
+            echo "Switch to the specified config. If no config is specified,"
+            echo "select from the list of available configurations."
+            return
+        fi
         local new_env=$1
         if [[ -z $new_env ]]; then
             echo "Available configurations:"
@@ -25,11 +33,24 @@ gconfig() {
 
     # List available gcloud configurations
     list() {
+        if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+            echo "Usage: gconfig list"
+            echo
+            echo "List available gcloud configurations."
+            return
+        fi
         gcloud config configurations list --format json | jq -r '.[] | .name'
     }
 
     # Describe a gcloud configuration
     describe() {
+        if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+            echo "Usage: gconfig describe [CONFIG]"
+            echo
+            echo "Describe the specified configuration. If no config is"
+            echo "specified, describe the current config."
+            return
+        fi
         local this_env=$1
         if [[ -z this_env ]]; then
             this_env=$(current)
@@ -40,7 +61,11 @@ gconfig() {
     # Print this help message
     help() {
         local this_file=$(find "$HOME" -name gconfig.sh -type f -print -quit)
-        funcs=$(awk -F\( '/^[  ]+[a-z]+\(\)/ {gsub("[  ]+", ""); print $1}' "$this_file")
+        local funcs=$(awk -F\( '/^[  ]+[a-z]+\(\)/ {gsub("[  ]+", ""); print $1}' "$this_file")
+        if [[ "$funcs" =~ "$1" ]]; then
+            $1 -h
+            return
+        fi
         echo "Usage: gconfig COMMAND [FLAGS]"
         echo
         echo "Manage gcloud configurations."
