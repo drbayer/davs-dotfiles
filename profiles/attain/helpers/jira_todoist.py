@@ -35,15 +35,22 @@ def add_todoist_task(jira_issue):
     )
 
 
-jira_base_url = 'https://klover.attlassian.net/'
+cert = '/opt/homebrew/etc/ca-certificates/cert.pem'
+jira_base_url = 'https://klover.atlassian.net/'
 jira_user = 'dbayer@attaindata.io'
+jira_token = ""
 jira_token_file = os.path.join(os.path.expanduser('~'), '.ssh', 'jira_token')
-jira_search_string = 'assignee=currentUser() AND resolution = Unresolved'
 
 with open(jira_token_file, 'r') as f:
     jira_token = f.read().splitlines()[0]
 
-jira = JIRA(jira_base_url, basic_auth=(jira_user, jira_token))
+jira_opts = {
+    "server": jira_base_url,
+    "verify": cert
+}
+jira = JIRA(options=jira_opts, basic_auth=(jira_user, jira_token))
+
+jira_search_string = 'assignee=currentUser() AND resolution = Unresolved'
 jira_issues = jira.search_issues(jira_search_string)
 
 todoist_key_file = os.path.join(os.path.expanduser('~'), '.ssh', 'todoist')
