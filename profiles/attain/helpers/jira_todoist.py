@@ -11,6 +11,7 @@ from jira import JIRA
 from todoist_api_python.api import TodoistAPI
 from enum import Enum
 from configparser import ConfigParser
+from datetime import date
 
 import os
 import re
@@ -74,13 +75,14 @@ class Todoist:
 
     def add_task(self, jira_issue):
         todoist_content = f'[{jira_issue.key}]({jira_issue.permalink()}) {jira_issue.fields.summary}'
+        duedate = jira_issue.fields.duedate if jira_issue.fields.duedate else date.today().strftime('%Y-%m-%d')
         print(f'Adding Todoist task: {todoist_content}')
         self.todoist.add_task(
-            project_id=self.todoist_project_id,
+            project_id=self.project_id,
             content=todoist_content,
             priority=TodoistPriority.p1.value,
-            due_string='today',
-            labels=[self.todoist_label]
+            due_date=duedate,
+            labels=[self.config.todoist_label]
         )
 
     def close_task(self, taskid):
