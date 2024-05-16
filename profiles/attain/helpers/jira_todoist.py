@@ -11,7 +11,7 @@ from jira import JIRA
 from todoist_api_python.api import TodoistAPI
 from enum import Enum
 from configparser import ConfigParser
-from datetime import date
+from datetime import date, datetime
 
 import os
 import re
@@ -85,6 +85,13 @@ class Todoist:
             labels=[self.config.todoist_label]
         )
 
+    def set_due_date(self, jira_issue, todoist_task):
+        jira_duedate = jira_issue.fields.duedate if jira_issue.fields.duedate else date.today().strftime('%Y-%m-%d')
+        todoist_duedate = todoist_task.due.date if todoist_task.due.date else date.today().strftime('%Y-%m-%d')
+        if datetime.strptime(todoist_duedate, '%Y-%m-%d') < datetime.strptime(jira_duedate, '%Y-%m-%d'):
+            print(f'Updating due date to {jira_duedate} for task {todoist_task.content}')
+            self.todoist.update_task(task_id=todoist_task.id, due_date=jira_duedate)
+
     def close_task(self, taskid):
         self.todoist.close_task(task_id=taskid)
 
@@ -102,6 +109,7 @@ def main():
             todoist.add_task(issue)
         elif len(found_tasks) == 1:
             print(f'Found existing task: {found_tasks[0].content}')
+            todoist.set_due_date(issue, found_tasks[0])
             jira_issues = [i for i in jira_issues if i.key != issue.key]
             todoist_tasks.remove(found_tasks[0])
         elif len(found_tasks) > 1:
