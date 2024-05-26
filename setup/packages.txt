@@ -1,0 +1,12 @@
+bash-completion@2
+bash-git-prompt
+htop
+jq
+karabiner-elements
+lynx
+multimarkdown
+numi
+obsidian
+virtualenv
+xbar
+yamllint
