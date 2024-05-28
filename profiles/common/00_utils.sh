@@ -67,3 +67,33 @@ get_package_manager() {
     echo "$pkg_mgr"
 }
 
+# iTerm2 helper functions
+function tabname() {
+    echo -ne "\033]0;"$*"\007"
+}
+
+function tabcolor() {
+    local red=0
+    local green=0
+    local blue=0
+    case $1 in
+        green)
+            red=57
+            green=197
+            blue=77
+            ;;
+        red)
+            red=270
+            green=60
+            blue=83
+            ;;
+        orange)
+            red=227
+            green=143
+            blue=10
+            ;;
+    esac
+    echo -ne "\033]6;1;bg;red;brightness;${red}\a"
+    echo -ne "\033]6;1;bg;green;brightness;${green}\a"
+    echo -ne "\033]6;1;bg;blue;brightness;${blue}\a"
+}
