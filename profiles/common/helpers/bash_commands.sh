@@ -8,3 +8,7 @@ function de64() {
   echo $1 | base64 -D
 }
 
+function nameTab() {
+    echo -ne "\033]0;"$*"\007"
+}
+
