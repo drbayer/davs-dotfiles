@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from sys import version_info, exit
+import fcntl
+import os
 
 
 if version_info < (3,9):
@@ -15,6 +17,25 @@ from datetime import date, datetime
 
 import os
 import re
+
+
+class LockFile:
+    def __init__(self, lockfile):
+        self.lockfile = lockfile
+
+    def __enter__(self):
+        self.acquire_lock()
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.release_lock()
+
+    def acquire_lock(self):
+        self.lock = open(self.lockfile, 'w')
+        fcntl.flock(self.lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+    def release_lock(self):
+        fcntl.flock(self.lock.fileno(), fcntl.LOCK_UN)
+        self.lock.close()
 
 
 class TodoistPriority(Enum):
@@ -124,4 +145,9 @@ def main():
 
 
 if __name__ == "__main__":
+    lock = LockFile(os.path.expanduser("~/.bash.d/safety-zone/jira_todoist.lock"))
+    try:
+        lock.acquire_lock()
+    except:
+        pass
     main()
