@@ -148,6 +148,7 @@ if __name__ == "__main__":
     lock = LockFile(os.path.expanduser("~/.bash.d/safety-zone/jira_todoist.lock"))
     try:
         lock.acquire_lock()
-    except:
-        pass
+    except Exception as e:
+        exit()
     main()
+    lock.release_lock()
