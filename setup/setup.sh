@@ -240,6 +240,42 @@ load_ssh_key() {
     fi
 }
 
+install_brew_packages() {
+    pkg_file="${DEST_DIR}/profiles/active/homebrew/installs.txt"
+    if [[ ! -f "$pkg_file" ]]; then
+        return 1
+    fi
+    pkg_list=$(cat "$pkg_file")
+    cp "$pkg_list" "$pkg_list.bak"
+    echo "Package list:"
+    echo "$pkg_list"
+    echo
+    read -r -p "Install full list? [Y|n] " FULL_INSTALL
+    if [[ "${FULL_INSTALL,,}" == "y" ]]; then
+        install_list=$(echo "$pkg_list" | tr '\n' ' ')
+    else
+        for pkg in $pkg_list; do
+            read -r -p "Install package $pkg? [Y|n]" INSTALL
+            if [[ "${INSTALL,,}" == "y" ]]; then
+                install_list="$install_list $pkg"
+            else
+                skip_list="$skip_list $pkg"
+            fi
+        done
+    fi
+    echo "Packages to install:"
+    echo "$install_list" | tr ' ' '\n'
+    read -r -p "Continue? [y|n] " CONTINUE
+    if [[ "${CONTINUE,,}" = "y" ]]; then
+        brew install "$install_list"
+    else
+        echo "Install cancelled by user"
+        return 1
+    fi
+    echo "Packages installed: $install_list"
+    echo "Packages skipped: $skip_list"
+}
+
 while getopts :ybd:g:p: FLAG; do
     case $FLAG in
         b)  BACKUP_ALL=y
@@ -283,6 +319,8 @@ done < <(tail -n +2 "${DEST_DIR}/setup/links.csv")
 for item in "${!links[@]}"; do
     link_item "${DEST_DIR}/${item}" "${HOME}/${links[$item]}"
 done
+
+install_brew_packages
 
 exec -l ${SHELL}
 
