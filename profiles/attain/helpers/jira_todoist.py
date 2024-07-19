@@ -3,6 +3,7 @@
 from sys import version_info, exit
 import fcntl
 import os
+import re
 
 
 if version_info < (3,9):
@@ -125,7 +126,7 @@ def main():
     todoist_tasks = todoist.get_tasks()
 
     for issue in jira_issues:
-        found_tasks = [t for t in todoist_tasks if issue.key in t.content]
+        found_tasks = [t for t in todoist_tasks if re.match(r"\[%s\]" % issue.key, t.content)]
         if len(found_tasks) == 0:
             todoist.add_task(issue)
         elif len(found_tasks) == 1:
