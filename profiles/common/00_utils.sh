@@ -92,6 +92,18 @@ function tabcolor() {
             green=143
             blue=10
             ;;
+        purple)
+            red=255
+            green=0
+            blue=255
+            ;;
+        *)
+            if [[ "$1" =~ ^[0-9]+,[0-9]+,[0-9]$ ]]; then
+                red=$(echo "$1" | cut -f1 -d,)
+                green=$(echo "$1" | cut -f2 -d,)
+                blue=$(echo "$1" | cut -f3 -d,)
+            fi
+            ;;
     esac
     echo -ne "\033]6;1;bg;red;brightness;${red}\a"
     echo -ne "\033]6;1;bg;green;brightness;${green}\a"
