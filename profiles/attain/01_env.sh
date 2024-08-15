@@ -4,3 +4,5 @@ export GITHUB_SSH_COMMAND='ssh -i /Users/dbayer/.ssh/github-drbayer'
 export initialstattest=initialstattest.c6zdrrll14uj.us-east-2.rds.amazonaws.com
 export kloverstats=kloverstats.c6zdrrll14uj.us-east-2.rds.amazonaws.com
 export PATH=$PATH:/opt/attain/bin
+
+eval "$(thefuck --alias)"
