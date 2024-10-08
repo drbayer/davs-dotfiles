@@ -3,3 +3,4 @@ argo
 visual-studio-code
 ripgrep
 ytt
+golang
