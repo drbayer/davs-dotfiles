@@ -4,8 +4,8 @@
 export DOTFILES_COMMIT='true'       # default to commit dotfiles changes on exiting bash
 export EDITOR='/usr/bin/vim'
 export PS1='[\u@\h: \w]\$ '
-export HISTSIZE=500000
-export HISTFILESIZE=500000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 export HISTTIMEFORMAT="%m/%d/%y %T "
 export HISTCONTROL=ignorespace
 export BASH_SILENCE_DEPRECATION_WARNING=1
