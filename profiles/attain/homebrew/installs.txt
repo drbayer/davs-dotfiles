@@ -5,3 +5,4 @@ ripgrep
 ytt
 golang
 rbenv
+cmake
