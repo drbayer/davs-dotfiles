@@ -1,0 +1,13 @@
+~/.bash_history {
+    monthly
+    rotate -1
+    create
+    olddir ~/.bash.d/safety-zone/bash_history
+    notifempty
+    createolddir
+    dateext
+    dateformat -%Y%m%d-%H:%M:%S
+    nomail
+}
+
+include ~/.bash.d/profiles/active/logrotate

@@ -19,3 +19,9 @@ if [[ -e /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# bash history gets big, so set up logrotate
+LOGROTATE_STATUS_DIR="$DOTFILES_BASEDIR/profiles/active/logrotate"
+if [[ ! -d "$LOGROTATE_STATUS_DIR" ]]; then
+    mkdir "$LOGROTATE_STATUS_DIR"
+fi
+logrotate -s "$LOGROTATE_STATUS_DIR/logrotate.status" "$DOTFILES_BASEDIR/profiles/bash_history"

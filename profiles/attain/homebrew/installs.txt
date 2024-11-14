@@ -6,3 +6,4 @@ ytt
 golang
 rbenv
 cmake
+logrotate

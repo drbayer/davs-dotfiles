@@ -52,5 +52,27 @@ if !empty(glob("$DOTFILES_BASEDIR/profiles/common/flake8"))
     let g:syntastic_python_flake8_args = "--append-config $DOTFILES_BASEDIR/profiles/common/flake8"
 endif
 
+" Tagbar config
+nnoremap <C-o> :TagbarToggle<CR>
+let g:tagbar_type_tf = {
+  \ 'ctagstype': 'tf',
+  \ 'kinds': [
+    \ 'r:Resource',
+    \ 'R:Resource',
+    \ 'd:Data',
+    \ 'D:Data',
+    \ 'v:Variable',
+    \ 'V:Variable',
+    \ 'p:Provider',
+    \ 'P:Provider',
+    \ 'm:Module',
+    \ 'M:Module',
+    \ 'o:Output',
+    \ 'O:Output',
+    \ 'f:TFVar',
+    \ 'F:TFVar'
+  \ ]
+\ }
+
 " CSV don't obfuscate field delimiters
 let g:csv_no_conceal = 1
