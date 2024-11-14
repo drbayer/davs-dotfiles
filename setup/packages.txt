@@ -3,6 +3,7 @@ bash-git-prompt
 htop
 jq
 karabiner-elements
+logrotate
 lynx
 multimarkdown
 numi
