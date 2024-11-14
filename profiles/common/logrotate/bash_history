@@ -10,4 +10,4 @@
     nomail
 }
 
-#include ~/.bash.d/profiles/active/logrotate
+include ~/.bash.d/profiles/active/logrotate/includes
