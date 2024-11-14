@@ -24,4 +24,4 @@ LOGROTATE_STATUS_DIR="$DOTFILES_BASEDIR/profiles/active/logrotate"
 if [[ ! -d "$LOGROTATE_STATUS_DIR" ]]; then
     mkdir "$LOGROTATE_STATUS_DIR"
 fi
-logrotate -s "$LOGROTATE_STATUS_DIR/logrotate.status" "$DOTFILES_BASEDIR/profiles/bash_history"
+logrotate -s "$LOGROTATE_STATUS_DIR/logrotate.status" "$DOTFILES_BASEDIR/profiles/common/logrotate/bash_history"
