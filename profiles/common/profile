@@ -23,7 +23,12 @@ trap exit_bash EXIT
 
 BASH_VERSION=$($BASH --version | awk '/bash/ {print $4}')
 BASH_MAJOR_VERSION=$(echo "$BASH_VERSION" | awk -F'.' '{print $1}')
-CURRENT_PROFILE="${HOME}/.bash.d/profiles/active"
+
+if [[ -d "$DOTFILES_BASEDIR" ]]; then
+    CURRENT_PROFILE="$DOTFILES_BASEDIR/profiles/active"
+else
+    CURRENT_PROFILE="${HOME}/.bash.d/profiles/active"
+fi
 
 if [[ $BASH_MAJOR_VERSION -ge "4" ]]; then
     shopt -s globstar
