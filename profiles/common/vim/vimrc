@@ -73,6 +73,11 @@ if !empty(glob("~/.bash.d/profiles/active/vimrc"))
     so ~/.bash.d/profiles/active/vimrc
 endif
 
+" Code folding
+set foldmethod=indent       " syntax-based folding; can also try indent
+set nofoldenable            " don't close folds on open
+set foldlevel=2
+
 " Source any extra plugin files from the active bash profile
 if !empty(glob("~/.bash.d/profiles/active/vim"))
     let include_list = globpath("~/.bash.d/profiles/active/vim/plugin", "*.vim", 0, 1)
