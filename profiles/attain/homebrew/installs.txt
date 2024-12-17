@@ -7,3 +7,5 @@ golang
 rbenv
 cmake
 logrotate
+gawk
+parallel
