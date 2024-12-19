@@ -9,3 +9,6 @@ cmake
 logrotate
 gawk
 parallel
+hashicorp/tap/terraform
+terraform
+--help
