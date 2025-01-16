@@ -12,3 +12,4 @@ parallel
 hashicorp/tap/terraform
 terraform
 --help
+mysql-client
