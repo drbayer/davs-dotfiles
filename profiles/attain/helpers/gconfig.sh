@@ -46,7 +46,7 @@ gconfig() {
                 active=""
             fi
             echo "$active:$config" | awk -F: '{printf "%3.3s  %s\n", $1, $2}'
-        done<<<$(gcloud config configurations list --format json | jq -r '.[] | "\($.name) \(.is_active)"')
+        done<<<$(gcloud config configurations list --format json | jq -r '.[] | "\(.name) \(.is_active)"')
     }
 
     # Describe a gcloud configuration
