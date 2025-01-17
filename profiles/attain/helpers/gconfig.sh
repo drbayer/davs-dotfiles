@@ -3,7 +3,7 @@
 gconfig() {
 
     # Print the active gcloud configuration
-    current() {
+    _current() {
         if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
             echo "Usage: gconfig current"
             echo
@@ -14,7 +14,7 @@ gconfig() {
     }
 
     # Change to a different gcloud configuration
-    switch() {
+    _switch() {
         if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
             echo "Usage: gconfig switch [CONFIG]"
             echo
@@ -25,25 +25,32 @@ gconfig() {
         local new_env=$1
         if [[ -z $new_env ]]; then
             echo "Available configurations:"
-            list
+            _list
             read -p "Select configuration to switch to: " new_env
         fi
         gcloud config configurations activate $new_env
     }
 
     # List available gcloud configurations
-    list() {
+    _list() {
         if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
             echo "Usage: gconfig list"
             echo
             echo "List available gcloud configurations."
             return
         fi
-        gcloud config configurations list --format json | jq -r '.[] | .name'
+        while read config active; do
+            if [[ $active == "true" ]]; then
+                active='*'
+            else
+                active=""
+            fi
+            echo "$active:$config" | awk -F: '{printf "%3.3s  %s\n", $1, $2}'
+        done<<<$(gcloud config configurations list --format json | jq -r '.[] | "\($.name) \(.is_active)"')
     }
 
     # Describe a gcloud configuration
-    describe() {
+    _describe() {
         if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
             echo "Usage: gconfig describe [CONFIG]"
             echo
@@ -59,7 +66,7 @@ gconfig() {
     }
 
     # Print this help message
-    help() {
+    _help() {
         local this_file=$(find "$HOME" -name gconfig.sh -type f -print -quit)
         local funcs=$(awk -F\( '/^[  ]+[a-z]+\(\)/ {gsub("[  ]+", ""); print $1}' "$this_file")
         if [[ "$funcs" =~ "$1" ]]; then
@@ -79,15 +86,15 @@ gconfig() {
 
 
     case $1 in
-        current)    current $2
+        current)    _current $2
                     ;;
-        switch)     switch $2
+        switch)     _switch $2
                     ;;
-        list)       list $2
+        list)       _list $2
                     ;;
-        describe)   describe $2
+        describe)   _describe $2
                     ;;
-        *)          help
+        *)          _help
                     ;;
     esac
 }
