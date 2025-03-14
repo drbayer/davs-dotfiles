@@ -13,3 +13,5 @@ hashicorp/tap/terraform
 terraform
 --help
 mysql-client
+gitlab-runner
+wget

@@ -23,3 +23,5 @@ fi
 LOGROTATE_STATUS_DIR="$DOTFILES_BASEDIR/profiles/active/logrotate"
 mkdir -p "$LOGROTATE_STATUS_DIR/includes"
 logrotate -s "$LOGROTATE_STATUS_DIR/logrotate.status" "$DOTFILES_BASEDIR/profiles/common/logrotate/bash_history"
+# add alias to easily view all bash history, not just $HISTFILE
+alias history_all='history -c; for f in $DOTFILES_BASEDIR/safety-zone/bash_history/.bash_history*; do history -r $f; done; history -r $HISTFILE; history | less; history -cr $HISTFILE'
