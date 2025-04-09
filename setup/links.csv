@@ -6,3 +6,4 @@ profiles/common/vim/vimrc,.vimrc
 profiles/common/vim/plugin,.vim/plugin
 profiles/common/vim/autoload,.vim/autoload
 profiles/common/vim/plugins.vim,.vim/plugins.vim
+profiles/active/git/gitignore,.gitignore
