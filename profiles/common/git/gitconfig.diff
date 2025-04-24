@@ -1,0 +1,4 @@
+[diff]
+    colorMoved = plain
+    renames = true
+    mnemonicPrefix = true
