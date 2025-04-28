@@ -16,3 +16,14 @@ mysql-client
 gitlab-runner
 wget
 nmap
+--help
+--cask
+--dry-run
+terraform@1.73
+--cask
+--dry-run
+terraform@1.7.3
+--cask
+versions
+cask
+versions
