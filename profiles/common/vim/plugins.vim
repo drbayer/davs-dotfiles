@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
+Plug 'Exafunction/windsurf.vim', { 'branch': 'main' }
 
 call plug#end()
 
