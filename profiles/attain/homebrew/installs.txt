@@ -27,3 +27,6 @@ terraform@1.7.3
 versions
 cask
 versions
+virtualenv
+tfenv
+tfenv
