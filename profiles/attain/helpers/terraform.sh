@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set_tf_version() {
-    tf_version="1.7.3"
+    tf_version="${1:-1.7.3}"
     git_root=$(git rev-parse --show-toplevel 2> /dev/null)
     if [[ -n $git_root ]]; then
         repo=$(awk '/url/ {print $NF}' "$git_root/.git/config")
