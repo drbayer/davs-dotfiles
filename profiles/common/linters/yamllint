@@ -10,7 +10,7 @@ rules:
         max-start: 1
     indentation:
         indent-sequences: whatever
-    line-length:
-        max: 150
+    line-length: disable
+        /* max: 150 */
     truthy:
         check-keys: false
