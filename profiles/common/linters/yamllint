@@ -11,6 +11,5 @@ rules:
     indentation:
         indent-sequences: whatever
     line-length: disable
-        /* max: 150 */
     truthy:
         check-keys: false
