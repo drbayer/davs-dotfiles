@@ -30,3 +30,4 @@ versions
 virtualenv
 tfenv
 tfenv
+grpcurl
