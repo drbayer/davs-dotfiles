@@ -6,7 +6,9 @@ export initialstattest=initialstattest.c6zdrrll14uj.us-east-2.rds.amazonaws.com
 export kloverstats=kloverstats.c6zdrrll14uj.us-east-2.rds.amazonaws.com
 export PATH=$PATH:/opt/attain/bin:/opt/homebrew/opt/mysql-client/bin
 export JIRA_USER=$(get_safe_value JIRA_USER)
-export JIRA_TOKEN=$(head -1 $(get_safe_value JIRA_TOKEN_FILE))
+export JIRA_TOKEN_FILE=$(get_safe_value JIRA_TOKEN_FILE)
+echo "JIRA_TOKEN_FILE: $JIRA_TOKEN_FILE"
+export JIRA_TOKEN=$(head -1 "$JIRA_TOKEN_FILE")
 
 eval "$(thefuck --alias)"
 

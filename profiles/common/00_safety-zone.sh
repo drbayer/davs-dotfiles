@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2046,SC1091
-
+echo "TESTING: $(whoami)"
 . "${DOTFILES_BASEDIR}/profiles/common/00_utils.sh"
 . "${DOTFILES_BASEDIR}/profiles/common/00_retcodes.sh"
 
@@ -16,7 +16,7 @@ get_safe_value() {
         warn "Key to search for not provided"
         return $(get_retcode PARAMETER_NOT_PROVIDED)
     else
-        awk -F= -v key="$key" '{if ( $1 == key) { print $2; exit }}' "$values_file"
+        echo $(eval $(awk -F= -v key="$key" '{if ( $1 == key) { print $2; exit }}' "$values_file"))
     fi
 }
 
