@@ -32,3 +32,4 @@ tfenv
 tfenv
 grpcurl
 s3cmd
+pstree
