@@ -1,2 +1,4 @@
 */**/env.json.sh
 **/config.tf
+**/*.tfstate
+**/.cursor/tickets
