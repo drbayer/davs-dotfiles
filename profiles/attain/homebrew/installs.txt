@@ -34,3 +34,4 @@ grpcurl
 s3cmd
 pstree
 rust
+postgresql@13
