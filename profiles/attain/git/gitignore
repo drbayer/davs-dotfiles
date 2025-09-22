@@ -2,3 +2,5 @@
 **/config.tf
 **/*.tfstate
 **/.cursor/tickets
+**/.npm
+**/node_modules
