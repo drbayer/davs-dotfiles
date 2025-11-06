@@ -36,3 +36,4 @@ pstree
 rust
 postgresql@13
 postgres
+nvm
