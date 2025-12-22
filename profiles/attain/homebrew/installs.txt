@@ -37,3 +37,4 @@ rust
 postgresql@13
 postgres
 nvm
+cidr2range
