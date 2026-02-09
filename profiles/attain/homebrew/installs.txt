@@ -38,3 +38,5 @@ postgresql@13
 postgres
 nvm
 cidr2range
+glab
+gitlab-ci-local
