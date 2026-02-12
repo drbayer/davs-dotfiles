@@ -41,3 +41,4 @@ cidr2range
 glab
 gitlab-ci-local
 rustup
+goenv
