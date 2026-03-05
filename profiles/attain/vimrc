@@ -19,3 +19,12 @@ let g:tagbar_type_tf = {
     \ 'F:TFVar'
   \ ]
 \ }
+
+if has('nvim')
+lua << EOF
+    require("claudecode").setup({
+        auto_start = false
+    })
+    require("snacks").setup()
+EOF
+endif

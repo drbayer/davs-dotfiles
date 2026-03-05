@@ -28,6 +28,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'Exafunction/windsurf.vim', { 'branch': 'main' }
 
+if !empty(glob("~/.bash.d/profiles/active/vim/plugins.vim"))
+    so ~/.bash.d/profiles/active/vim/plugins.vim
+endif
+
 call plug#end()
 
 " NERDTree config
@@ -77,3 +81,4 @@ let g:tagbar_type_tf = {
 
 " CSV don't obfuscate field delimiters
 let g:csv_no_conceal = 1
+
