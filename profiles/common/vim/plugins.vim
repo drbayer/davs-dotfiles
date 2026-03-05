@@ -36,7 +36,7 @@ let NERDTreeShowHidden=1
 let NERDTreeRespectWildIgnore=1
 set wildignore+=*.DS_Store
 if getcwd() =~ 'range-acl' || getcwd() !~ 'ingraphs-dashboards' && getcwd() !~ 'range'
-    autocmd VimEnter * NERDTree
+    autocmd VimEnter * silent! NERDTree
     autocmd VimEnter * wincmd p
 endif
 cnoremap Q qa

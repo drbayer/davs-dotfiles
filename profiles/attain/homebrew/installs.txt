@@ -42,3 +42,5 @@ glab
 gitlab-ci-local
 rustup
 goenv
+PeonPing/tap/peon-ping
+nvim
