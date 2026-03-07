@@ -2,3 +2,4 @@ minikube
 ansible
 ansible
 logrotate
+neovim
