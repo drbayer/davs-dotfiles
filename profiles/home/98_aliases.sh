@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2148,SC1091
 
+alias vim='nvim'
+
 # Google Cloud
 alias gca='gcloud config configurations activate'
 

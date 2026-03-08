@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/drbayer/.vim/**)",
+      "Read(//Users/drbayer/.local/share/nvim/**)"
+    ]
+  }
+}
