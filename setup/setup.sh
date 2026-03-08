@@ -72,8 +72,13 @@ backup() {
 link_item() {
     local src="$1"
     local dst="$2"
-    
-    if [[ -e "$dst"  ]]; then
+
+    # Skip if already correctly symlinked
+    if [[ -L "$dst" ]] && [[ "$(readlink "$dst")" == "$src" ]]; then
+        return 0
+    fi
+
+    if [[ -e "$dst" ]] || [[ -L "$dst" ]]; then
         if [[ $(overwrite "$ACCEPT_ALL" "$dst") == "y" ]]; then
             backup "$BACKUP_ALL" "$dst"
             [[ -L "$dst" ]] && unlink "$dst"
