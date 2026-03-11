@@ -32,6 +32,12 @@ if !empty(glob("~/.bash.d/profiles/active/vim/plugins.vim"))
     so ~/.bash.d/profiles/active/vim/plugins.vim
 endif
 
+if has('nvim')
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+endif
+
 call plug#end()
 
 " NERDTree config

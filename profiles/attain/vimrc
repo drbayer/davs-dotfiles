@@ -26,5 +26,9 @@ lua << EOF
         auto_start = false
     })
     require("snacks").setup()
+    require('telescope').setup{}
+    require('telescope').load_extension('fzf')
 EOF
+
+  )
 endif
