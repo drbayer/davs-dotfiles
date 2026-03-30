@@ -46,3 +46,4 @@ PeonPing/tap/peon-ping
 nvim
 1password-cli
 mysql-shell
+mycli
