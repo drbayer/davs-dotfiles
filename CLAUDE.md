@@ -75,3 +75,49 @@ export DOTFILES_COMMIT=false
 - Place helper scripts (added to PATH) in `profiles/common/helpers/` or `profiles/<name>/helpers/`
 - Add new symlinks by editing `setup/links.csv`
 - Add new profile-specific git config by placing a `gitconfig.*` file in `profiles/<name>/git/`
+
+### Script numbering conventions
+- `00_` — core utils, retcodes, safety-zone
+- `01_` — environment variables
+- `02_` — SSH/GCP agent setup
+- `20_` — package manager (homebrew)
+- `96_` — git config
+- `97_` — bash completions
+- `98_` — aliases
+- `99_` — language finalization (java, pip3, kubectl)
+
+## Symlinks (defined in setup/links.csv)
+
+| Repo source | Home destination |
+|---|---|
+| `profiles/common/profile` | `~/.profile` |
+| `profiles/common/vim/vimrc` | `~/.vimrc` |
+| `profiles/common/vim/plugins.vim` | `~/.vim/plugins.vim` |
+| `profiles/common/vim/plugin` | `~/.vim/plugin` |
+| `profiles/common/vim/autoload` | `~/.vim/autoload` |
+| `profiles/common/nvim/init.vim` | `~/.config/nvim/init.vim` |
+| `profiles/common/linters/flake8` | `~/.flake8` |
+| `profiles/common/linters/yamllint` | `~/.yamllint` |
+| `profiles/active/git/gitignore` | `~/.gitignore` |
+
+## Vim/Neovim Config Layering
+
+- **`profiles/common/vim/vimrc`** (symlinked to `~/.vimrc`) — main vim config; sources `~/.vim/plugins.vim`, then `profiles/active/vimrc`, then `profiles/active/vim/plugin/*.vim`
+- **`profiles/common/vim/plugins.vim`** (symlinked to `~/.vim/plugins.vim`) — vim-plug setup; common plugins for all profiles; auto-installs missing plugins on VimEnter
+- **`profiles/<name>/vim/plugins.vim`** — profile-specific plugin additions
+- **`profiles/<name>/vimrc`** — profile-specific vim/nvim settings (sourced by the common vimrc)
+- **`profiles/common/nvim/init.vim`** (symlinked to `~/.config/nvim/init.vim`) — sources `~/.vimrc`, then `profiles/active/nvim/*.vim`
+
+### Where to edit for specific changes
+
+| What to change | File to edit |
+|---|---|
+| Vim setting for all profiles | `profiles/common/vim/vimrc` |
+| Vim plugin for all profiles | `profiles/common/vim/plugins.vim` |
+| Vim setting for one profile | `profiles/<name>/vimrc` |
+| Vim plugin for one profile | `profiles/<name>/vim/plugins.vim` |
+| Neovim-only setting (all profiles) | `profiles/common/nvim/init.vim` |
+| Neovim colorscheme (profile-specific) | `profiles/<name>/vimrc` (lua `vim.cmd("colorscheme ...")` in UIEnter autocmd) |
+| Bash for all profiles | `profiles/common/NN_name.sh` |
+| Bash for one profile | `profiles/<name>/NN_name.sh` |
+| Secrets/tokens | `safety-zone/safety-zone_values.ini` via `get_safe_value`/`set_safe_value` |

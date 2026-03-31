@@ -37,6 +37,15 @@ set_safe_value() {
     fi
 }
 
+list_safe_values() {
+    if ! values_file_exists; then
+        warn "Unable to locate safety-zone values file: $values_file"
+        return $(get_retcode FILE_NOT_FOUND)
+    else
+        awk -F= '/^[^[#]/ { print $1 }' "$values_file"
+    fi
+}
+
 create_safe_values_file() {
     if ! values_file_exists; then
         touch "$values_file"
