@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Read(//Users/drbayer/.vim/**)",
-      "Read(//Users/drbayer/.local/share/nvim/**)"
+      "Read(//Users/drbayer/.local/share/nvim/**)",
+      "Bash(find ~/.config/nvim -type f -name *.vim -o -name *.lua)",
+      "Bash(find ~/.vim -type f \\\\\\(-name telescope.vim -o -name *.lua \\\\\\) -path *after*)",
+      "Bash(find ~/.vim -path */after/* -type f)",
+      "Bash(xargs cat:*)"
     ]
   }
 }
