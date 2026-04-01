@@ -25,12 +25,14 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'Exafunction/windsurf.vim', { 'branch': 'main' }
+Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
 
 if !empty(glob("~/.bash.d/profiles/active/vim/plugins.vim"))
     so ~/.bash.d/profiles/active/vim/plugins.vim
 endif
 
 if has('nvim')
+  Plug 'folke/tokyonight.nvim'
 endif
 
 call plug#end()
