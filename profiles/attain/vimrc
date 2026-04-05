@@ -29,42 +29,16 @@ lua << EOF
         picker = { enabled = true }
     })
 
-    -- Re-apply custom highlights whenever colorscheme changes
-    local function apply_custom_highlights()
-        -- Terminal windows: define a group and apply via winhighlight in TermOpen
-        vim.api.nvim_set_hl(0, "TermNormal",                    { bg = "#000000" })
-        -- Snacks picker windows
-        vim.api.nvim_set_hl(0, "SnacksPickerNormal",            { bg = "#000000" })
-        vim.api.nvim_set_hl(0, "SnacksPickerPreviewNormal",     { bg = "#000000" })
-        vim.api.nvim_set_hl(0, "SnacksPickerInputNormal",       { bg = "#000000" })
-        vim.api.nvim_set_hl(0, "SnacksPickerBorder",            { bg = "#000000" })
-        vim.api.nvim_set_hl(0, "SnacksPickerPreviewBorder",     { bg = "#000000" })
-        vim.api.nvim_set_hl(0, "SnacksPickerInputBorder",       { bg = "#000000" })
-    end
-
+    -- Terminal windows: black background
     vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "*",
-        callback = apply_custom_highlights,
+        callback = function()
+            vim.api.nvim_set_hl(0, "TermNormal", { bg = "#000000" })
+        end,
     })
-
-    -- Apply bg override to terminal windows via winhighlight
     vim.api.nvim_create_autocmd("TermOpen", {
         callback = function()
             vim.opt_local.winhighlight = "Normal:TermNormal"
-        end,
-    })
-
-    -- Apply bg override to snacks picker windows via winhighlight
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "snacks_picker_list", "snacks_picker_input" },
-        callback = function()
-            vim.opt_local.winhighlight = "Normal:SnacksPickerNormal,NormalFloat:SnacksPickerNormal,FloatBorder:SnacksPickerBorder"
-        end,
-    })
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = "snacks_picker_preview",
-        callback = function()
-            vim.opt_local.winhighlight = "Normal:SnacksPickerPreviewNormal,NormalFloat:SnacksPickerPreviewNormal,FloatBorder:SnacksPickerPreviewBorder"
         end,
     })
 
@@ -72,7 +46,7 @@ lua << EOF
     vim.api.nvim_create_autocmd("UIEnter", {
         once = true,
         callback = function()
-            vim.cmd("colorscheme torte")
+            vim.cmd("colorscheme moonfly")
         end,
     })
 
