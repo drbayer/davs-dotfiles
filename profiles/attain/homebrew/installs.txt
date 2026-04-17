@@ -47,3 +47,4 @@ nvim
 1password-cli
 mysql-shell
 mycli
+direnv
