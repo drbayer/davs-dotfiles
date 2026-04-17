@@ -4,3 +4,5 @@
 **/.cursor/tickets
 **/.npm
 **/node_modules
+**/.terraform*
+
