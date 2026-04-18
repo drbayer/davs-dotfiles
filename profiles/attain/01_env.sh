@@ -11,4 +11,4 @@ export JIRA_TOKEN_FILE=$(get_safe_value JIRA_TOKEN_FILE)
 export JIRA_TOKEN=$(head -1 "$JIRA_TOKEN_FILE")
 
 eval "$(thefuck --alias)"
-
+eval "$(direnv hook bash)"
