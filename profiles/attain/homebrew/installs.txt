@@ -48,3 +48,4 @@ nvim
 mysql-shell
 mycli
 direnv
+rtk
