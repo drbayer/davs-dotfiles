@@ -49,3 +49,4 @@ mysql-shell
 mycli
 direnv
 rtk
+gh
