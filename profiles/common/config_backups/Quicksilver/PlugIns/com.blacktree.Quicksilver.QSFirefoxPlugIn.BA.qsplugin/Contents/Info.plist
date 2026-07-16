@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>21D62</string>
+	<key>Bundle Display Name</key>
+	<string>Firefox</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Firefox Plugin</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.blacktree.Quicksilver.QSFirefoxPlugIn</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Firefox Plugin</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.1</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>BA</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>13C100</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTPlatformVersion</key>
+	<string>12.1</string>
+	<key>DTSDKBuild</key>
+	<string>21C46</string>
+	<key>DTSDKName</key>
+	<string>macosx12.1</string>
+	<key>DTXcode</key>
+	<string>1321</string>
+	<key>DTXcodeBuild</key>
+	<string>13C100</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.14</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2014, QSApp.</string>
+	<key>QSPlugIn</key>
+	<dict>
+		<key>author</key>
+		<string>Blacktree, Inc.</string>
+		<key>categories</key>
+		<array>
+			<string>Web</string>
+			<string>Applications</string>
+		</array>
+		<key>description</key>
+		<string>Bookmarks &amp; History for Firefox</string>
+		<key>extendedDescription</key>
+		<string>&lt;h3&gt;Firefox Plugin&lt;/h3&gt;
+&lt;p&gt;This plugin allows you to search your Firefox bookmarks and history directly from Quicksilver. It also provides a "Current Web Page (Firefox)" proxy object - allowing you to easily manipulate the current Firefox Web Page.&lt;/p&gt;
+&lt;h4&gt;Catalog Entries&lt;/h4&gt;
+&lt;p&gt;Under the &lt;strong&gt;Firefox&lt;/strong&gt; entry, you will find the following two subentries:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Firefox Bookmarks&lt;/strong&gt; includes all the URLs you bookmarked, without any folder structure or tags you might have applied.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Firefox History&lt;/strong&gt; contains the last 200 URLs you visited (disabled by default).&lt;/p&gt;
+&lt;p&gt;Tip: if you want to increase or decrease the number of History items in Quicksilver, you can:
+1. Go to &lt;code&gt;~/Library/Application Support/Quicksilver/PlugIns/&lt;/code&gt;
+2. find &lt;code&gt;com.blacktree.quicksilver.QSFirefoxPlugin.*.qsplugin&lt;/code&gt;
+3. right-click -&amp;gt; "Show Package Contents"
+4. then open &lt;code&gt;Contents/Info.plist&lt;/code&gt;
+5. In there, find the entry  &lt;code&gt;QSPresetAdditions -&amp;gt; Item 0 -&amp;gt; children -&amp;gt; Item 1 -&amp;gt; settings -&amp;gt; historySize&lt;/code&gt;
+6. Change the number to something different.
+7. Restart Quicksilver and rescan the catalog&lt;/p&gt;
+&lt;h4&gt;Proxy Objects&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Current Web Page (Firefox)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Current Web Page (Firefox)&lt;/strong&gt; proxy object contains the title and URL of the webpage currently open in Firefox.&lt;/p&gt;
+&lt;p&gt;Tip: Firefox updates the 'current webpage' information about every 15 seconds. If you encounter delays between getting the latest webpage information, you can shorten the delayby changing a hidden preference in Firefox:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Type  &lt;code&gt;about:config&lt;/code&gt; in Firefox's address bar.&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;sessionstore.interval&lt;/code&gt; in the filter-field.&lt;/li&gt;
+&lt;li&gt;The  &lt;code&gt;browser.sessionstore.interval&lt;/code&gt; value is in milliseconds. Change it to something smaller, like 10000 or 5000&lt;/li&gt;
+&lt;/ol&gt;</string>
+		<key>icon</key>
+		<string>org.mozilla.firefox</string>
+		<key>relatedBundles</key>
+		<array>
+			<string>org.mozilla.firefox</string>
+		</array>
+	</dict>
+	<key>QSPresetAdditions</key>
+	<array>
+		<dict>
+			<key>ID</key>
+			<string>QSPresetFirefoxGroup</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetFirefoxBookmarks</string>
+					<key>enabled</key>
+					<true/>
+					<key>icon</key>
+					<string>org.mozilla.firefox</string>
+					<key>name</key>
+					<string>Firefox Bookmarks</string>
+					<key>requiresBundle</key>
+					<string>org.mozilla.firefox</string>
+					<key>requiresSettingsPath</key>
+					<true/>
+					<key>settings</key>
+					<dict>
+						<key>fileContents</key>
+						<string>Firefox Bookmarks</string>
+						<key>parser</key>
+						<string>QSFirefoxBookmarksParser</string>
+						<key>path</key>
+						<string>~/Library/Application Support/Firefox/Profiles/*/places.sqlite</string>
+						<key>skipItem</key>
+						<integer>1</integer>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetFirefoxHistory</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>org.mozilla.firefox</string>
+					<key>name</key>
+					<string>Firefox History</string>
+					<key>requiresBundle</key>
+					<string>org.mozilla.firefox</string>
+					<key>requiresSettingsPath</key>
+					<true/>
+					<key>settings</key>
+					<dict>
+						<key>fileContents</key>
+						<string>Firefox History</string>
+						<key>historySize</key>
+						<integer>200</integer>
+						<key>parser</key>
+						<string>QSFirefoxHistoryParser</string>
+						<key>path</key>
+						<string>~/Library/Application Support/Firefox/Profiles/*/places.sqlite</string>
+						<key>skipItem</key>
+						<integer>1</integer>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>icon</key>
+			<string>org.mozilla.firefox</string>
+			<key>name</key>
+			<string>Firefox</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+	</array>
+	<key>QSRegistration</key>
+	<dict>
+		<key>QSFSParsers</key>
+		<dict>
+			<key>QSFirefoxBookmarksParser</key>
+			<string>QSFirefoxBookmarksParser</string>
+			<key>QSFirefoxHistoryParser</key>
+			<string>QSFirefoxHistoryParser</string>
+		</dict>
+		<key>QSObjectHandlers</key>
+		<dict>
+			<key>QSFirefoxPlugIn</key>
+			<string>QSFirefoxPlugIn</string>
+		</dict>
+		<key>QSProxies</key>
+		<dict>
+			<key>QSFirefoxCurrentWebPageProxy</key>
+			<dict>
+				<key>icon</key>
+				<string>org.mozilla.firefox</string>
+				<key>name</key>
+				<string>Current Web Page (Firefox)</string>
+				<key>providerClass</key>
+				<string>QSFirefoxPlugIn</string>
+				<key>types</key>
+				<array>
+					<string>Apple URL pasteboard type</string>
+					<string>NSStringPboardType</string>
+				</array>
+			</dict>
+		</dict>
+		<key>QSWebBrowserMediators</key>
+		<dict>
+			<key>org.mozilla.firefox</key>
+			<string>QSFirefoxPlugIn</string>
+		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>version</key>
+		<string>4001</string>
+	</dict>
+</dict>
+</plist>

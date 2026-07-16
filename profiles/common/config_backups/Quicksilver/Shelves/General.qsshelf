@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>class</key>
+		<string>QSObject</string>
+		<key>data</key>
+		<dict>
+			<key>Apple URL pasteboard type</key>
+			<string>https://jira01.corp.linkedin.com:8443/browse/</string>
+			<key>NeXT Rich Text Format v1.0 pasteboard type</key>
+			<data>
+			e1xydGYxXGFuc2lcYW5zaWNwZzEyNTJcY29jb2FydGYyNTgwClxj
+			b2NvYXRleHRzY2FsaW5nMFxjb2NvYXBsYXRmb3JtMHtcZm9udHRi
+			bFxmMFxmc3dpc3NcZmNoYXJzZXQwIEhlbHZldGljYTt9CntcY29s
+			b3J0Ymw7XHJlZDI1NVxncmVlbjI1NVxibHVlMjU1O30Ke1wqXGV4
+			cGFuZGVkY29sb3J0Ymw7O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4
+			MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgw
+			XHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1
+			cmFsXHBhcnRpZ2h0ZW5mYWN0b3IwCntcZmllbGR7XCpcZmxkaW5z
+			dHtIWVBFUkxJTksgImh0dHBzOi8vamlyYTAxLmNvcnAubGlua2Vk
+			aW4uY29tOjg0NDMvYnJvd3NlLyJ9fXtcZmxkcnNsdCAKXGYwXGZz
+			MjQgXGNmMCBodHRwczovL2ppcmEwMS5jb3JwLmxpbmtlZGluLmNv
+			bTo4NDQzL2Jyb3dzZS99fX0=
+			</data>
+			<key>QSRemoteHostsType</key>
+			<string>jira01.corp.linkedin.com</string>
+			<key>public.html</key>
+			<data>
+			PHAgc3R5bGU9Im1hcmdpbjogMC4wcHggMC4wcHggMC4wcHggMC4w
+			cHgiPjxmb250IGZhY2U9IkhlbHZldGljYSIgc2l6ZT0iMyIgc3R5
+			bGU9ImZvbnQ6IDEyLjBweCBIZWx2ZXRpY2EiPjxhIGhyZWY9Imh0
+			dHBzOi8vamlyYTAxLmNvcnAubGlua2VkaW4uY29tOjg0NDMvYnJv
+			d3NlLyI+aHR0cHM6Ly9qaXJhMDEuY29ycC5saW5rZWRpbi5jb206
+			ODQ0My9icm93c2UvPC9hPjwvZm9udD48L3A+Cg==
+			</data>
+			<key>public.utf8-plain-text</key>
+			<string>https://jira01.corp.linkedin.com:8443/browse/</string>
+		</dict>
+		<key>properties</key>
+		<dict>
+			<key>QSObjectCreationDate</key>
+			<date>2021-08-18T23:09:06Z</date>
+			<key>QSObjectName</key>
+			<string>https://jira01.corp.linkedin.com:8443/browse/</string>
+			<key>QSObjectSource</key>
+			<string>com.microsoft.edgemac</string>
+			<key>QSObjectType</key>
+			<string>public.utf8-plain-text</string>
+		</dict>
+	</dict>
+</array>
+</plist>

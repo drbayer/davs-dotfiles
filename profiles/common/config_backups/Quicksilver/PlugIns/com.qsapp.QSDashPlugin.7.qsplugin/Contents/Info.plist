@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>21D49</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>Dash Plugin</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.qsapp.QSDashPlugin</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Dash Plugin</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>7</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>13C90</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTPlatformVersion</key>
+	<string>12.1</string>
+	<key>DTSDKBuild</key>
+	<string>21C46</string>
+	<key>DTSDKName</key>
+	<string>macosx12.1</string>
+	<key>DTXcode</key>
+	<string>1320</string>
+	<key>DTXcodeBuild</key>
+	<string>13C90</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.14</string>
+	<key>QSActions</key>
+	<dict>
+		<key>QSDashSearch</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSDashPluginActionProvider</string>
+			<key>actionSelector</key>
+			<string>searchDocSet:query:</string>
+			<key>commandFormat</key>
+			<string>Search for “%2$@” in the %1$@ DocSet</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSDashDocsetType</string>
+			</array>
+			<key>icon</key>
+			<string>DashAppIcon</string>
+			<key>indirectTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>name</key>
+			<string>Search DocSet for…</string>
+			<key>precedence</key>
+			<real>2</real>
+		</dict>
+		<key>QSDashSearchGlobal</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSDashPluginActionProvider</string>
+			<key>actionSelector</key>
+			<string>searchDash:</string>
+			<key>commandFormat</key>
+			<string>Search for “%1$@” in Dash</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>DashAppIcon</string>
+			<key>name</key>
+			<string>Search in Dash</string>
+		</dict>
+		<key>QSDashSearchReversed</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSDashPluginActionProvider</string>
+			<key>actionSelector</key>
+			<string>searchDocSet:query:</string>
+			<key>commandFormat</key>
+			<string>Search for “%1$@” in the %2$@ DocSet</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>DashAppIcon</string>
+			<key>indirectTypes</key>
+			<array>
+				<string>QSDashDocsetType</string>
+			</array>
+			<key>name</key>
+			<string>Find in DocSet…</string>
+			<key>reverseArguments</key>
+			<string>YES</string>
+		</dict>
+		<key>QSDashViewDocset</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSDashPluginActionProvider</string>
+			<key>actionSelector</key>
+			<string>viewDocset:</string>
+			<key>commandFormat</key>
+			<string>View the %1$@ DocSet in Dash</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSDashDocsetType</string>
+			</array>
+			<key>icon</key>
+			<string>DashAppIcon</string>
+			<key>name</key>
+			<string>View in Dash</string>
+			<key>precedence</key>
+			<real>1.8999999999999999</real>
+		</dict>
+	</dict>
+	<key>QSPlugIn</key>
+	<dict>
+		<key>author</key>
+		<string>Rob McBroom</string>
+		<key>categories</key>
+		<array>
+			<string>Development</string>
+			<string>Documentation</string>
+			<string>Applications</string>
+		</array>
+		<key>description</key>
+		<string>Allows quick access to Dash DocSets</string>
+		<key>extendedDescription</key>
+		<string>&lt;h1&gt;Dash Plug-in&lt;/h1&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This plug-in adds DocSets from &lt;a href="https://kapeli.com/dash"&gt;Dash&lt;/a&gt; to the catalog to allow quick searches on specific topics.&lt;/p&gt;
+&lt;h2&gt;Actions&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Search in Dash&lt;/dt&gt;
+&lt;dd&gt;Search Dash for the text in the first pane. Use this for generic searches, like "regular expression" or to specify a more specific search by hand, like "nginx:listen ipv6".&lt;/dd&gt;
+&lt;dt&gt;Search DocSet for…&lt;/dt&gt;
+&lt;dd&gt;With one or more DocSets selected in the first pane, you can enter a search query in the third pane. The search will be limited to the selected DocSet(s).&lt;/dd&gt;
+&lt;dt&gt;Find in DocSet…&lt;/dt&gt;
+&lt;dd&gt;With text entered in the first pane, you can use this action to select one or more DocSets in the third pane and search them for the text. The search will be limited to the selected DocSet(s).&lt;/dd&gt;
+&lt;dt&gt;View in Dash&lt;/dt&gt;
+&lt;dd&gt;Select a DocSet in Dash and show its index page.&lt;/dd&gt;
+&lt;/dl&gt;</string>
+		<key>icon</key>
+		<string>DashAppIcon</string>
+		<key>relatedBundles</key>
+		<array>
+			<string>com.kapeli.dashdoc</string>
+			<string>com.kapeli.dash</string>
+		</array>
+	</dict>
+	<key>QSPresetAdditions</key>
+	<array>
+		<dict>
+			<key>ID</key>
+			<string>QSDashDocsetsPreset</string>
+			<key>enabled</key>
+			<true/>
+			<key>icon</key>
+			<string>DashAppIcon</string>
+			<key>name</key>
+			<string>Dash DocSets</string>
+			<key>source</key>
+			<string>QSDashPluginSource</string>
+		</dict>
+	</array>
+	<key>QSRegistration</key>
+	<dict>
+		<key>QSActionProviders</key>
+		<dict>
+			<key>QSDashPluginActionProvider</key>
+			<string>QSDashPluginActionProvider</string>
+		</dict>
+		<key>QSBundleChildHandlers</key>
+		<dict>
+			<key>com.kapeli.dash</key>
+			<string>QSDashPluginSource</string>
+			<key>com.kapeli.dashdoc</key>
+			<string>QSDashPluginSource</string>
+		</dict>
+		<key>QSObjectHandlers</key>
+		<dict>
+			<key>QSDashDocsetType</key>
+			<string>QSDashPluginSource</string>
+		</dict>
+		<key>QSObjectSources</key>
+		<dict>
+			<key>QSDashPluginSource</key>
+			<string>QSDashPluginSource</string>
+		</dict>
+		<key>QSTypeDefinitions</key>
+		<dict>
+			<key>QSDashDocsetType</key>
+			<dict>
+				<key>icon</key>
+				<string>DashAppIcon</string>
+				<key>name</key>
+				<string>Dash DocSets</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>version</key>
+		<string>4012</string>
+	</dict>
+	<key>QSResourceAdditions</key>
+	<dict>
+		<key>DashAppIcon</key>
+		<array>
+			<dict>
+				<key>bundle</key>
+				<string>com.kapeli.dashdoc</string>
+			</dict>
+			<dict>
+				<key>bundle</key>
+				<string>com.kapeli.dash</string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

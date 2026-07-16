@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>21D49</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>zoom.us Plugin</string>
+	<key>CFBundleExecutable</key>
+	<string>zoom.us Plugin</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.qsapp.ZoomPlugin</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>zoom.us Plugin</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.1.0</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>C</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>13C90</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTPlatformVersion</key>
+	<string>12.1</string>
+	<key>DTSDKBuild</key>
+	<string>21C46</string>
+	<key>DTSDKName</key>
+	<string>macosx12.1</string>
+	<key>DTXcode</key>
+	<string>1320</string>
+	<key>DTXcodeBuild</key>
+	<string>13C90</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.14</string>
+	<key>QSActions</key>
+	<dict>
+		<key>QSZoomJoinMeeting</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSZoomActionProvider</string>
+			<key>actionSelector</key>
+			<string>join:</string>
+			<key>commandFormat</key>
+			<string>Join %@</string>
+			<key>directTypes</key>
+			<array>
+				<string>QSZoomMeetingType</string>
+			</array>
+			<key>name</key>
+			<string>Join Meeting</string>
+			<key>precedence</key>
+			<real>3</real>
+		</dict>
+		<key>QSZoomJoinMeetingWithID</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSZoomActionProvider</string>
+			<key>actionSelector</key>
+			<string>joinWithID:</string>
+			<key>commandFormat</key>
+			<string>Join Zoom Meeting: %@</string>
+			<key>directTypes</key>
+			<array>
+				<string>Apple URL pasteboard type</string>
+			</array>
+			<key>icon</key>
+			<string>us.zoom.xos</string>
+			<key>name</key>
+			<string>Join Zoom Meeting</string>
+		</dict>
+	</dict>
+	<key>QSDefaults</key>
+	<dict>
+		<key>ZoomCheckForwardMinutes</key>
+		<integer>10</integer>
+	</dict>
+	<key>QSPlugIn</key>
+	<dict>
+		<key>author</key>
+		<string>Rob McBroom</string>
+		<key>categories</key>
+		<array>
+			<string>Calendar</string>
+		</array>
+		<key>description</key>
+		<string>Interact with zoom.us</string>
+		<key>extendedDescription</key>
+		<string>&lt;h1&gt;zoom.us Plugin&lt;/h1&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This plug-in streamlines the process of joining Zoom meetings.&lt;/p&gt;
+&lt;h2&gt;Actions&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Join Meeting&lt;/dt&gt;
+&lt;dd&gt;This action works on Zoom Meeting objects selected in the first pane. Currently, the only such object is the &lt;strong&gt;Next Zoom Meeting&lt;/strong&gt; proxy object described below.&lt;/dd&gt;
+&lt;dt&gt;Join Zoom Meeting&lt;/dt&gt;
+&lt;dd&gt;Running this action on an HTTP URL will extract the meeting ID and open it using Zoom’s &lt;code&gt;zoommtg://&lt;/code&gt; URL scheme, which bypasses your browser and opens directly in Zoom.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2&gt;Proxy Objects&lt;/h2&gt;
+&lt;h3&gt;Next Zoom Meeting&lt;/h3&gt;
+&lt;p&gt;This proxy represents any Zoom Meeting&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; occurring in the next 10 minutes. Simply select it and hit Return to join. You can also share it with others using Paste, E-mail To…, and other actions.&lt;/p&gt;
+&lt;p&gt;The number of minutes can be adjusted using a hidden preference. For example, to change it to 30 minutes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;defaults write com.blacktree.Quicksilver ZoomCheckForwardMinutes 30
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;The plug-in will look for a Zoom URL in the Location, URL, and Notes for all upcoming events. The first match it finds will be used.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</string>
+		<key>icon</key>
+		<string>us.zoom.xos</string>
+		<key>relatedBundles</key>
+		<array>
+			<string>us.zoom.xos</string>
+		</array>
+	</dict>
+	<key>QSPresetAdditionsDisabled</key>
+	<array>
+		<dict>
+			<key>ID</key>
+			<string>QSPresetZoomUpcoming</string>
+			<key>enabled</key>
+			<true/>
+			<key>icon</key>
+			<string>us.zoom.xos</string>
+			<key>name</key>
+			<string>Upcoming Zoom Meetings</string>
+			<key>source</key>
+			<string>QSZoomSource</string>
+		</dict>
+	</array>
+	<key>QSRegistration</key>
+	<dict>
+		<key>QSObjectHandlers</key>
+		<dict>
+			<key>QSZoomMeetingType</key>
+			<string>QSZoomSource</string>
+		</dict>
+		<key>QSObjectSources</key>
+		<dict>
+			<key>QSZoomSource</key>
+			<string>QSZoomSource</string>
+		</dict>
+		<key>QSProxies</key>
+		<dict>
+			<key>NextZoomMeetingProxy</key>
+			<dict>
+				<key>icon</key>
+				<string>us.zoom.xos</string>
+				<key>name</key>
+				<string>Next Zoom Meeting</string>
+				<key>providerClass</key>
+				<string>QSZoomSource</string>
+			</dict>
+		</dict>
+		<key>QSTypeDefinitions</key>
+		<dict>
+			<key>QSZoomMeetingType</key>
+			<dict>
+				<key>icon</key>
+				<string>us.zoom.xos</string>
+				<key>name</key>
+				<string>Zoom Meeting</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>bundles</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<string>us.zoom.xos</string>
+				<key>name</key>
+				<string>zoom.us</string>
+			</dict>
+		</array>
+		<key>version</key>
+		<string>4012</string>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customEntries</key>
+	<array>
+		<dict>
+			<key>ID</key>
+			<string>B2BAFA0E-E8EC-4B35-AAB3-2D48014BB6D1</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>610319354.90327406</real>
+			<key>name</key>
+			<string>helpers</string>
+			<key>settings</key>
+			<dict>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/.bash.d/helpers</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>1326820A-E573-426E-B2E9-F92C02808162</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>610390105.65842199</real>
+			<key>name</key>
+			<string>Applications</string>
+			<key>settings</key>
+			<dict>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Dropbox/Applications</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
+	</array>
+	<key>enabledPresets</key>
+	<dict/>
+	<key>omittedItems</key>
+	<array/>
+</dict>
+</plist>

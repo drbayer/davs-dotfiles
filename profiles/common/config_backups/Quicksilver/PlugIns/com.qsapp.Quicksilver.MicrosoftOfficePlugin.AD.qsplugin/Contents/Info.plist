@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>20G417</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>Microsoft Office</string>
+	<key>CFBundleExecutable</key>
+	<string>MicrosoftOfficePlugin</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.qsapp.Quicksilver.MicrosoftOfficePlugin</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Microsoft Office Plugin</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.0</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>AD</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>13C100</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
+	<key>DTPlatformVersion</key>
+	<string>12.1</string>
+	<key>DTSDKBuild</key>
+	<string>21C46</string>
+	<key>DTSDKName</key>
+	<string>macosx12.1</string>
+	<key>DTXcode</key>
+	<string>1321</string>
+	<key>DTXcodeBuild</key>
+	<string>13C100</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.14</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2011, QSApp</string>
+	<key>QSActions</key>
+	<dict/>
+	<key>QSPlugIn</key>
+	<dict>
+		<key>author</key>
+		<string>Patrick Robertson</string>
+		<key>categories</key>
+		<array>
+			<string>Applications</string>
+		</array>
+		<key>description</key>
+		<string>Recent documents from the Microsoft Office Suite</string>
+		<key>extendedDescription</key>
+		<string>&lt;h3&gt;Microsoft Office Plugin&lt;/h3&gt;
+&lt;p&gt;Enables moving down (using → or /) into Microsoft Word, Excel, Powerpoint to locate recently opened documents.&lt;/p&gt;
+&lt;p&gt;Works with Microsoft Office 2016, 2011 and 2008&lt;/p&gt;</string>
+		<key>icon</key>
+		<string>OfficeLego</string>
+		<key>relatedBundles</key>
+		<array>
+			<string>com.microsoft.Word</string>
+			<string>com.microsoft.Powerpoint</string>
+			<string>com.microsoft.Excel</string>
+			<string>com.microsoft.office</string>
+		</array>
+	</dict>
+	<key>QSRegistration</key>
+	<dict>
+		<key>QSBundleChildHandlers</key>
+		<dict>
+			<key>com.microsoft.Excel</key>
+			<string>MicrosoftOfficePluginSource</string>
+			<key>com.microsoft.Powerpoint</key>
+			<string>MicrosoftOfficePluginSource</string>
+			<key>com.microsoft.Word</key>
+			<string>MicrosoftOfficePluginSource</string>
+		</dict>
+		<key>QSObjectSources</key>
+		<dict>
+			<key>MicrosoftOfficePluginSource</key>
+			<string>MicrosoftOfficePluginSource</string>
+		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>version</key>
+		<string>4001</string>
+	</dict>
+</dict>
+</plist>
