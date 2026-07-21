@@ -50,3 +50,4 @@ mycli
 direnv
 rtk
 gh
+session-manager-plugin
