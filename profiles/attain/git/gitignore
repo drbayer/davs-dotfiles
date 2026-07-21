@@ -1,5 +1,5 @@
 */**/env.json.sh
-**/config.tf
+**/kluno/**/config.tf
 **/*.tfstate
 **/.cursor/tickets
 **/.npm
