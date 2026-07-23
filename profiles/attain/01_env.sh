@@ -1,7 +1,7 @@
 export GITHUB_SSH_COMMAND='ssh -i /Users/dbayer/.ssh/github-drbayer'
 
 # AWS RDS Hosts
-export devstats=devstats.c6zdrrll14uj.us-east-2.rds.amazonaws.com
+export devstats=devstats.cv9fmu9rjt22.us-east-2.rds.amazonaws.com
 export initialstattest=initialstattest.c6zdrrll14uj.us-east-2.rds.amazonaws.com
 export kloverstats=kloverstats.c6zdrrll14uj.us-east-2.rds.amazonaws.com
 export kloverstats_rr=kloverstats-readreplica.c6zdrrll14uj.us-east-2.rds.amazonaws.com
