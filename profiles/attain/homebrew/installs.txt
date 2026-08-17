@@ -52,3 +52,4 @@ rtk
 gh
 session-manager-plugin
 xkcdpass
+rclone
