@@ -8,5 +8,6 @@
     l = log --graph --pretty='%C(magenta)%ai %C(yellow)%h %C(cyan)%ae %C(auto)%s'
     p = push
     rb = "!BRANCH=$(git rev-parse --abbrev-ref HEAD); git com; MAIN=$(git rev-parse --abbrev-ref HEAD); git pull --rebase; git co $BRANCH; git pull --rebase; git rebase $MAIN"
-    s = status
     root = rev-parse --show-toplevel
+    s = status
+    sl = stash list --format='%gd %cr: %gs'
