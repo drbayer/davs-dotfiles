@@ -6,3 +6,4 @@ neovim
 PeonPing/tap/peon-ping
 PeonPing/tap/peon-ping
 poppler
+git-filter-repo
