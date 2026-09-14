@@ -53,3 +53,4 @@ gh
 session-manager-plugin
 xkcdpass
 rclone
+brave-browser
