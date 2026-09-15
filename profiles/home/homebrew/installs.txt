@@ -8,3 +8,4 @@ PeonPing/tap/peon-ping
 poppler
 git-filter-repo
 brave-browser
+openlogi
