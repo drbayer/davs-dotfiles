@@ -8,3 +8,4 @@ profiles/common/vim/autoload,.vim/autoload
 profiles/common/vim/plugins.vim,.vim/plugins.vim
 profiles/common/nvim/init.vim,.config/nvim/init.vim
 profiles/active/git/gitignore,.gitignore
+profiles/common/config_backups/karabiner,.config/karabiner

@@ -34,10 +34,41 @@
 	<string>https://generativelanguage.googleapis.com/v1beta/models/{{MODEL}}</string>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>ClaudeCodeTriggersInstalled</key>
+	<true/>
+	<key>CodeReviewSavedPrompts</key>
+	<data>
+	W3sidXVpZCI6IjU3Q0I2NTIzLUEyQzctNDA0QS1CNzc0LTdBNjdCMkZFNDlBOCIsIm5h
+	bWUiOiJEZWZhdWx0IiwidGV4dCI6IlJldmlldyB0aGUgcGVuZGluZyBjaGFuZ2VzIGlu
+	IHRoaXMgcmVwby4gRmxhZyBpc3N1ZXMgYSBjYXJlZnVsIG1haW50YWluZXIgd291bGQg
+	YmxvY2sgb24gYmVmb3JlIG1lcmdlLCBpbiByb3VnaGx5IHRoaXMgb3JkZXI6XG4gIDEu
+	IENvcnJlY3RuZXNzIOKAlCBsb2dpYyBlcnJvcnMsIGJyb2tlbiBpbnZhcmlhbnRzLCBt
+	aXNzZWQgZWRnZSBjYXNlcywgb2ZmLWJ5LW9uZSwgcmFjZXMsIGxpZmV0aW1lXC9tZW1v
+	cnkgYnVncywgZXJyb3IgcGF0aHMgdGhhdCBzd2FsbG93IGZhaWx1cmVzLlxuICAyLiBT
+	ZWN1cml0eSDigJQgaW5qZWN0aW9uLCBhdXRoblwvYXV0aHogbWlzdGFrZXMsIHNlY3Jl
+	dCBoYW5kbGluZywgdW5zYWZlIGRlc2VyaWFsaXphdGlvbiwgdW5zYWZlIGRlZmF1bHRz
+	LCBUT0NUT1UuXG4gIDMuIFJlbGlhYmlsaXR5ICYgcGVyZm9ybWFuY2Ug4oCUIGJsb2Nr
+	aW5nIHRoZSB3cm9uZyB0aHJlYWQsIHVuYm91bmRlZCByZXNvdXJjZSB1c2UsIGFjY2lk
+	ZW50YWwgTyhOwrIpLCByZXRyaWVzIHdpdGhvdXQgYmFja29mZiwgc2lsZW50IGZhaWx1
+	cmUgcGF0aHMuXG4gIDQuIENvbnRyYWN0IHJpc2sg4oCUIGJlaGF2aW9yIGNoYW5nZXMg
+	Y2FsbGVycyByZWx5IG9uLCBzaWxlbnRseSBjaGFuZ2VkIGRlZmF1bHRzLCBicm9rZW4g
+	YmFja3dhcmQgY29tcGF0aWJpbGl0eSwgbWlzc2luZyBtaWdyYXRpb25zLlxuXG5Gb3Ig
+	ZWFjaCBmaW5kaW5nIGNpdGUgYGZpbGU6bGluZWAsIGV4cGxhaW4gKndoeSogaXQgaXMg
+	d3JvbmcgKG5vdCB3aGF0IHRoZSBjb2RlIGRvZXMpLCBhbmQgcHJvcG9zZSBhIGNvbmNy
+	ZXRlIGZpeCB3aGVuIG9uZSBpcyBvYnZpb3VzLiBCZSBjYWxpYnJhdGVkOiBpZiBhIGZp
+	bmRpbmcgaXMgbm90IGhpZ2gtY29uZmlkZW5jZSwgc2F5IHNvIG9yIHNraXAgaXQuIFZl
+	cmlmeSBjbGFpbXMgYWdhaW5zdCB0aGUgYWN0dWFsIGNvZGUgcmF0aGVyIHRoYW4gaW5m
+	ZXJyaW5nIGZyb20gbmFtZXMuXG5cblNraXAgcHVyZSBzdHlsZSwgZm9ybWF0dGluZywg
+	bmFtaW5nLCBhbmQgYW55dGhpbmcgYSBsaW50ZXIgb3IgQ0kgYWxyZWFkeSBlbmZvcmNl
+	cy5cblxuSWYgeW91IGZpbmQgbm90aGluZyB3b3J0aCBmaXhpbmcsIHNheSBzbyBwbGFp
+	bmx5LiJ9XQ==
+	</data>
 	<key>Default Bookmark Guid</key>
 	<string>98FF8A1E-211C-4E31-8F57-91C85C81F21B</string>
 	<key>Default Browser Profile Guid</key>
 	<string>46A9C2B2-26A3-4C0E-8024-2CCD35A866F2</string>
+	<key>EnableAPIServer</key>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideTab</key>
@@ -651,6 +682,53 @@
 			<integer>512</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
+			<key>Triggers</key>
+			<array>
+				<dict>
+					<key>action</key>
+					<string>iTermEnterWorkgroupTrigger</string>
+					<key>contentregex</key>
+					<string></string>
+					<key>disabled</key>
+					<false/>
+					<key>eventParams</key>
+					<dict>
+						<key>jobName</key>
+						<string>claude</string>
+					</dict>
+					<key>matchType</key>
+					<integer>113</integer>
+					<key>parameter</key>
+					<string>builtin.claudeCode</string>
+					<key>partial</key>
+					<false/>
+					<key>regex</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermExitWorkgroupTrigger</string>
+					<key>contentregex</key>
+					<string></string>
+					<key>disabled</key>
+					<false/>
+					<key>eventParams</key>
+					<dict>
+						<key>jobName</key>
+						<string>claude</string>
+						<key>leaderOnly</key>
+						<true/>
+					</dict>
+					<key>matchType</key>
+					<integer>114</integer>
+					<key>parameter</key>
+					<string></string>
+					<key>partial</key>
+					<false/>
+					<key>regex</key>
+					<string></string>
+				</dict>
+			</array>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -722,12 +800,48 @@
 	<integer>5</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+		<string>Session Status</string>
+	</array>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>Workgroups</key>
+	<data>
+	W3sic2Vzc2lvbnMiOlt7Im1vZGUiOiJyZWd1bGFyIiwiY29tbWFuZCI6IiIsInVybFN0
+	cmluZyI6IiIsInVuaXF1ZUlkZW50aWZpZXIiOiJidWlsdGluLmNsYXVkZUNvZGUubWFp
+	biIsImtpbmQiOnsia2luZCI6InJvb3QifSwiZGlzcGxheU5hbWUiOiJDaGF0IiwidG9v
+	bGJhckl0ZW1zIjpbeyJraW5kIjoibW9kZVN3aXRjaGVyIn0seyJraW5kIjoiZ2l0U3Rh
+	dHVzIn0seyJraW5kIjoiYXV0b1JlcXVlc3RSZXZpZXdXaGVuSWRsZSJ9XSwicGVyRmls
+	ZUNvbW1hbmQiOiIifSx7Im1vZGUiOiJkaWZmIiwicGFyZW50SUQiOiJidWlsdGluLmNs
+	YXVkZUNvZGUubWFpbiIsImNvbW1hbmQiOiJnaXQgZGlmZnRvb2wgLXkgLXggdmltZGlm
+	ZiBcXChnaXRCYXNlKSIsInVybFN0cmluZyI6IiIsInVuaXF1ZUlkZW50aWZpZXIiOiJi
+	dWlsdGluLmNsYXVkZUNvZGUuZGlmZiIsImtpbmQiOnsia2luZCI6InBlZXIifSwiZGlz
+	cGxheU5hbWUiOiJEaWZmIiwidG9vbGJhckl0ZW1zIjpbeyJraW5kIjoibW9kZVN3aXRj
+	aGVyIn0seyJraW5kIjoiY2hhbmdlZEZpbGVTZWxlY3RvciJ9LHsia2luZCI6ImdpdEJh
+	c2VTZWxlY3RvciJ9LHsiYmFja1Nob3J0Y3V0Ijp7InNlcmlhbGl6ZWQiOiIweGY3MDIt
+	MHgzNDAwMDAtMHg3YiJ9LCJraW5kIjoibmF2aWdhdGlvbiIsImZvcndhcmRTaG9ydGN1
+	dCI6eyJzZXJpYWxpemVkIjoiMHhmNzAzLTB4MzQwMDAwLTB4N2MifSwicmVsb2FkU2hv
+	cnRjdXQiOnsic2VyaWFsaXplZCI6IjB4NzItMHgxMDAwMDAtMHhmIn19XSwicGVyRmls
+	ZUNvbW1hbmQiOiJnaXQgZGlmZnRvb2wgLXkgLXggdmltZGlmZiBcXChnaXRCYXNlKSAt
+	LSBcXChmaWxlKSJ9LHsibW9kZSI6ImNvZGVSZXZpZXciLCJwYXJlbnRJRCI6ImJ1aWx0
+	aW4uY2xhdWRlQ29kZS5tYWluIiwiY29tbWFuZCI6ImNsYXVkZSBcXChjb2RlUmV2aWV3
+	UHJvbXB0KSAtLWFwcGVuZC1zeXN0ZW0tcHJvbXB0LWZpbGUgJ1xcKGNvZGVSZXZpZXdT
+	eXN0ZW1Qcm9tcHRGaWxlKScgLS1zZXR0aW5ncyAnXFwoaXRlcm0yLmFwcEJ1bmRsZVBh
+	dGgpXC9Db250ZW50c1wvUmVzb3VyY2VzXC9jb2RlLXJldmlldy1zZXR0aW5ncy50eHQn
+	IiwidXJsU3RyaW5nIjoiIiwidW5pcXVlSWRlbnRpZmllciI6ImJ1aWx0aW4uY2xhdWRl
+	Q29kZS5yZXZpZXciLCJraW5kIjp7ImtpbmQiOiJwZWVyIn0sImRpc3BsYXlOYW1lIjoi
+	Q29kZSBSZXZpZXciLCJ0b29sYmFySXRlbXMiOlt7ImtpbmQiOiJtb2RlU3dpdGNoZXIi
+	fSx7InNob3J0Y3V0Ijp7InNlcmlhbGl6ZWQiOiIweDcyLTB4MTAwMDAwLTB4ZiJ9LCJr
+	aW5kIjoicmVsb2FkIn0seyJraW5kIjoiYXV0b1NlbmRDbGlwcGluZ3NXaGVuSWRsZSJ9
+	XSwicGVyRmlsZUNvbW1hbmQiOiIifV0sInVuaXF1ZUlkZW50aWZpZXIiOiJidWlsdGlu
+	LmNsYXVkZUNvZGUiLCJuYW1lIjoiQ2xhdWRlIENvZGUifV0=
+	</data>
 	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
 	<string>qrsAAAGXnXBrwGxMO6s=</string>
 	<key>findMode_iTerm</key>
