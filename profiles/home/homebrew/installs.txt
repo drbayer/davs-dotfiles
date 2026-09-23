@@ -9,3 +9,9 @@ poppler
 git-filter-repo
 brave-browser
 openlogi
+onedrive
+--cask
+onedrive
+onedrive
+--cask
+onedrive
