@@ -164,11 +164,11 @@ setup_profile() {
     if [[ ! -z "$profile" ]] && [[ -d "${DEST_DIR}/profiles/${profile}" ]]; then
         PROFILE="$profile"
     else
-        PROFILE=$(select_profile true)
+        PROFILE=$(dotfiles_select_profile true)
     fi
 
     if [[ -d "${DEST_DIR}/profiles/${PROFILE}" ]]; then
-        switch_profile "$PROFILE"
+        dotfiles_switch_profile "$PROFILE"
     else
         echo "Setup requires a valid profile to continue."
         usage

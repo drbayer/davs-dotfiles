@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC3010
 
-new_profile() {
+dotfiles_new_profile() {
   local new_profile="$1"
 
   if [[ -z "$new_profile" ]]; then
@@ -16,7 +16,7 @@ new_profile() {
   fi
 }
 
-select_profile() {
+dotfiles_select_profile() {
     local output_profile="$1"
 
     declare -a profiles
@@ -46,7 +46,7 @@ select_profile() {
     fi
 }
 
-switch_profile() {
+dotfiles_switch_profile() {
   local selected_profile="$1"
 
   if [[ -z "$selected_profile" ]]; then
@@ -62,4 +62,9 @@ switch_profile() {
   else
     echo "Exiting without changing profile"
   fi
+}
+
+dotfiles_commit_toggle() {
+    DOTFILES_COMMIT=$([[ "$DOTFILES_COMMIT" == "true" ]] && echo "false" || echo "true")
+    echo "DOTFILES_COMMIT $([[ "$DOTFILES_COMMIT" == "true" ]] && echo "enabled" || echo "disabled")"
 }
