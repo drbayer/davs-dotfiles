@@ -100,3 +100,14 @@ export PATH
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+
+# BEGIN Slick Certificate Management
+export AWS_CA_BUNDLE="/Users/david.bayer/.local/prisma_certificates.pem"
+export SSL_CERT_FILE="/Users/david.bayer/.local/prisma_certificates.pem"
+export NODE_EXTRA_CA_CERTS="/Users/david.bayer/.local/prisma_certificates.pem"
+export REQUESTS_CA_BUNDLE="/Users/david.bayer/.local/prisma_certificates.pem"
+export CURL_CA_BUNDLE="/Users/david.bayer/.local/prisma_certificates.pem"
+export DENO_CERT="/Users/david.bayer/.local/prisma_certificates.pem"
+# END Slick Certificate Management
