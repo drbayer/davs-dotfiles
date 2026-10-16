@@ -1229,7 +1229,6 @@
 	<key>ToolbeltTools</key>
 	<array>
 		<string>Profiles</string>
-		<string>Session Status</string>
 	</array>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
