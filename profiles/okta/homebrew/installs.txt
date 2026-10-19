@@ -1,2 +1,9 @@
 bash-git-prompt
 logrotate
+multimarkdown
+lynx
+multimarkdown
+lynx
+tree
+terragrunt
+opentofu
