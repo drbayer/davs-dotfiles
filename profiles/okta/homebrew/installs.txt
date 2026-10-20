@@ -7,3 +7,4 @@ lynx
 tree
 terragrunt
 opentofu
+gh
