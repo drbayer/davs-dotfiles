@@ -11,3 +11,4 @@
     root = rev-parse --show-toplevel
     s = status
     sl = stash list --format='%gd %cr: %gs'
+    vimdiff = difftool
