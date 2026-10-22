@@ -8,3 +8,4 @@ tree
 terragrunt
 opentofu
 gh
+uv
