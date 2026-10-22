@@ -8,5 +8,10 @@
       "Bash(find ~/.vim -path */after/* -type f)",
       "Bash(xargs cat:*)"
     ]
+  },
+  {
+    "enabledPlugins": {
+      "ai-attribution@ord-claude-plugins": false
+    }
   }
 }

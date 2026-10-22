@@ -9,3 +9,4 @@ terragrunt
 opentofu
 gh
 uv
+jsonlint
