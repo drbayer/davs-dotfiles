@@ -9,9 +9,7 @@
       "Bash(xargs cat:*)"
     ]
   },
-  {
-    "enabledPlugins": {
-      "ai-attribution@ord-claude-plugins": false
-    }
+  "enabledPlugins": {
+    "ai-attribution@ord-claude-plugins": false
   }
 }
