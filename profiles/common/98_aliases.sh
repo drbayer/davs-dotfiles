@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2148,SC1091
 
 os=$(get_os)
 

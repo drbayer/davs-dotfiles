@@ -233,8 +233,8 @@ setup_git() {
         gitdir="${DEST_DIR}/profiles/${profile}/git"
         if [[ -d "${gitdir}" ]]; then
             for includefile in "${gitdir}"/gitconfig.*; do
-                git config --global --get-all include.path | grep -q "path = $includefile" ||
-                    git config --global --add include.path "$includefile"
+                [[ -f "$includefile" ]] || continue
+                git config --global --replace-all --fixed-value include.path "$includefile" "$includefile" 2>/dev/null
             done
         fi
     done

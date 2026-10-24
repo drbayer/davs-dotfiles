@@ -1,4 +1,5 @@
-# shellcheck disable=SC2148
+#!/usr/bin/env bash
+# shellcheck disable=SC2148,SC1090
 
 # set java version
 

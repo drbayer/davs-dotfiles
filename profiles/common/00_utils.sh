@@ -1,4 +1,4 @@
-# shellcheck disable=SC2148,SC3010,SC3037
+#!/usr/bin/env bash
 
 # utility functions
 
@@ -69,7 +69,7 @@ get_package_manager() {
 
 # iTerm2 helper functions
 function tabname() {
-    echo -ne "\033]0;"$*"\007"
+    echo -ne "\033]0;\"$*\"\007"
 }
 
 function tabcolor() {

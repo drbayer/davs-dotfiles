@@ -1,4 +1,5 @@
-# shellcheck disable=SC2148,SC2207
+#!/usr/bin/env bash
+# shellcheck disable=SC2207
 
 _pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \

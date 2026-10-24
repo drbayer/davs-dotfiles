@@ -1,4 +1,4 @@
-# shellcheck disable=SC2148
+#!/usr/bin/env bash
 
 # weather info
 
@@ -20,7 +20,7 @@ this_tty=$(tty)
 if [[ "$((${this_tty: -3} % 2))" -eq "0" ]]; then
     # parameter "1" limits output to today
     # parameter "F" removes the "Follow" output
-    curl -s --max-time 1 wttr.in/$CITY?1Fu
+    curl -s --max-time 1 wttr.in/"$CITY"?1Fu
 else
     curl -s --max-time 3 www.wttr.in/Moon?F
 fi

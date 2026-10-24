@@ -1,4 +1,5 @@
-# shellcheck disable=SC2148,SC1091,SC3010
+#! /usr/bin/env bash
+# shellcheck disable=SC1091
 
 # git prompt & completion
 
@@ -29,12 +30,18 @@ if [[ $(which git) ]]; then
     export GIT_PROMPT_THEME=Single_line
     export GIT_REPO_DIR="${HOME}"/repos
 
+    while IFS= read -r includefile; do
+        if [[ "$includefile" == "$DOTFILES_BASEDIR"/* ]] && [[ ! -e "$includefile" ]]; then
+            git config --global --unset-all --fixed-value include.path "$includefile"
+        fi
+    done < <(git config --global --get-all include.path)
+
     for profile in active common; do
         gitdir="${DOTFILES_BASEDIR}/profiles/${profile}/git"
         if [[ -d "${gitdir}" ]]; then
             for includefile in "${gitdir}"/gitconfig.*; do
-                git config --global --get-all include.path | grep -q "$includefile" ||
-                    git config --global --add include.path "$includefile"
+                [[ -f "$includefile" ]] || continue
+                git config --global --replace-all --fixed-value include.path "$includefile" "$includefile" 2>/dev/null
             done
         fi
     done

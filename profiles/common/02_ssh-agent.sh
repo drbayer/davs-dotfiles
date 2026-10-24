@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2148
 # Set up ssh-agent and ssh keys. If more than 5 keys found
 # you will see a warning and be asked which keys to load.
 

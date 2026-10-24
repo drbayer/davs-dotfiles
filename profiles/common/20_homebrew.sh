@@ -1,4 +1,4 @@
-# shellcheck disable=SC2086,SC3010
+#!/usr/bin/env bash
 
 # Certain utility functions including get_retcode and warn
 # found in 00_utils.sh
