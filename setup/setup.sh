@@ -37,11 +37,13 @@ if (( BASH_VERSINFO[0] < MIN_BASH_MAJOR )); then
     fi
 
     NEW_BASH="$(brew --prefix)/bin/bash"
+    # shellcheck disable=SC2016
     if [[ ! -x "$NEW_BASH" ]] || (( $("$NEW_BASH" -c 'echo ${BASH_VERSINFO[0]') < MIN_BASH_MAJOR )); then
         echo "Install bash view Homebrew..."
         brew bundle install --file=../profiles/common/homebrew/Brewfile || exit 1
     fi
 
+    # shellcheck disable=SC2016
     echo "Re-launching setup under $NEW_BASH ($("$NEW_BASH" -c 'echo $BASH_VERSION'))"
     export DOTFILES_BASH_REEXEC=1
     exec "$NEW_BASH" "$0" "$@"
@@ -163,8 +165,8 @@ install_git() {
 
 clone_repo() {
     # Pull the dotfiles repo. Make sure all the necessary things are in place first.
-    repo="$1"
-    dest="$2"
+    local repo="$1"
+    local dest="$2"
 
     install_git
     load_ssh_key

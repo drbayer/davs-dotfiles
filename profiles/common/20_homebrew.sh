@@ -5,13 +5,11 @@
 
 brew() {
     # Utility function to capture installed packages
-    cmd=$1
-    shift
-    # shellcheck disable=SC2124
-    pkgs="$@" 
-    homebrew=/opt/homebrew/bin/brew
-    installs_dir="$DOTFILES_BASEDIR/profiles/active/homebrew"
-    installs_file="$installs_dir/Brewfile"
+    local cmd=$1 action arg
+    local -a pkgs=()
+    local homebrew=/opt/homebrew/bin/brew
+    local installs_dir="$DOTFILES_BASEDIR/profiles/active/homebrew"
+    local installs_file="$installs_dir/Brewfile"
 
     if [[ ! -x "$homebrew" ]]; then
         warn "brew command not found. Install at https://brew.sh"
@@ -23,9 +21,16 @@ brew() {
     fi
 
     case "$cmd" in
-        install)    echo "$pkgs" | xargs -I {} "$homebrew" bundle add --file "$installs_file" {};;
-        uninstall)  echo "$pkgs" | xargs -I {} "$homebrew" bundle remove --file "$installs_file" {};;
+        install)    action=add;;
+        uninstall)  action=remove;;
     esac
 
-    "$homebrew" "$cmd" "$pkgs"
+    if [[ -n "$action" ]]; then
+        for arg in "${@:2}"; do
+            [[ "$arg" == -* ]] || pkgs+=("$arg")
+        done
+        (( ${#pkgs[@]} )) && "$homebrew" bundle "$action" --file "$installs_file" "${pkgs[@]}"
+    fi
+
+    "$homebrew" "$@"
  }

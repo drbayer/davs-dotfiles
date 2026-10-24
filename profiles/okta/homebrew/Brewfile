@@ -9,3 +9,5 @@ brew "gh"
 brew "uv"
 # JSON parser and validator with a CLI
 brew "jsonlint"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
