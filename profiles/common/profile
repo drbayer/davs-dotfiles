@@ -19,7 +19,19 @@ $(git status -b --untracked=all --porcelain)"
     fi
 }
 
-trap exit_bash EXIT
+# Only auto-commit from interactive terminal sessions; skip non-interactive
+# login shells (bash -lc), Claude Code sessions, and IDE terminals
+should_trap_exit() {
+    [[ $- == *i* ]] || return 1
+    [[ -z "${CLAUDECODE}" ]] || return 1
+    [[ "${TERM_PROGRAM}" != "vscode" ]] || return 1
+    [[ "${TERMINAL_EMULATOR}" != "JetBrains-JediTerm" ]] || return 1
+    return 0
+}
+
+if should_trap_exit; then
+    trap exit_bash EXIT
+fi
 
 BASH_VERSION=$($BASH --version | awk '/bash/ {print $4}')
 BASH_MAJOR_VERSION=$(echo "$BASH_VERSION" | awk -F'.' '{print $1}')

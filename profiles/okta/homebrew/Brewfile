@@ -1,0 +1,11 @@
+brew "bash-git-prompt"
+brew "multimarkdown"
+brew "lynx"
+brew "tree"
+brew "terragrunt"
+brew "opentofu"
+brew "gh"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# JSON parser and validator with a CLI
+brew "jsonlint"

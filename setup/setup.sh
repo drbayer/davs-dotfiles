@@ -7,8 +7,47 @@
 # as the script itself. Destination entries are relative to user's
 # home directory.
 
-# TODO install homebrew
-# TODO install hombebrew packages
+# --- Bootstrap operations ---
+
+# Install homebrew if missing
+find_brew() {
+    local b
+    for b in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+        [[ -x "$b" ]] && { echo "$b"; return 0; }
+    done
+    command -v brew 2>/dev/null
+}
+
+BREW=$(find_brew)
+if [[ -z "$BREW" ]]; then
+    echo "Homebrew not found; installing..."
+    NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || exit 1
+    BREW=$(find_brew)
+    [[ -z "$BREW" ]] && { echo "ERROR: Homebrew install failed." >&2; exit 1; }
+fi
+eval "$("$BREW" shellenv)"
+
+# Install Bash >= 5
+MIN_BASH_MAJOR=5
+
+if (( BASH_VERSINFO[0] < MIN_BASH_MAJOR )); then
+    if [[ -n "$DOTFILES_BASH_REEXEC" ]]; then
+        echo "ERROR: still running bash ${BASH_VERSION} after re-exec. Aborting." >&2
+        exit 1
+    fi
+
+    NEW_BASH="$(brew --prefix)/bin/bash"
+    if [[ ! -x "$NEW_BASH" ]] || (( $("$NEW_BASH" -c 'echo ${BASH_VERSINFO[0]') < MIN_BASH_MAJOR )); then
+        echo "Install bash view Homebrew..."
+        brew bundle install --file=../profiles/common/homebrew/Brewfile || exit 1
+    fi
+
+    echo "Re-launching setup under $NEW_BASH ($("$NEW_BASH" -c 'echo $BASH_VERSION'))"
+    export DOTFILES_BASH_REEXEC=1
+    exec "$NEW_BASH" "$0" "$@"
+fi
+
+# --- End Bootstrap ---
 
 BACKUP_ALL=n
 ACCEPT_ALL=n
@@ -246,12 +285,14 @@ load_ssh_key() {
 }
 
 install_brew_packages() {
-    pkg_file="${DEST_DIR}/profiles/active/homebrew/installs.txt"
-    if [[ ! -f "$pkg_file" ]]; then
-        return 1
-    fi
-    pkg_list=$(cat "$pkg_file")
-    cp "$pkg_list" "$pkg_list.bak"
+    local pkg_list
+    local install_list
+    local skip_list
+    for pkg_file in "${DEST_DIR}/profiles/common/homebrew/Brewfile" "${DEST_DIR}/profiles/active/homebrew/Brewfile"; do
+        [[ -f "$pkg_file" ]] || continue
+        pkg_list="$pkg_list $(brew bundle list --file="$pkg_file")"
+    done
+
     echo "Package list:"
     echo "$pkg_list"
     echo

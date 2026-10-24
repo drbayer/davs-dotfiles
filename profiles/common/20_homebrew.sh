@@ -11,7 +11,7 @@ brew() {
     pkgs="$@" 
     homebrew=/opt/homebrew/bin/brew
     installs_dir="$DOTFILES_BASEDIR/profiles/active/homebrew"
-    installs_file="$installs_dir/installs.txt"
+    installs_file="$installs_dir/Brewfile"
 
     if [[ ! -x "$homebrew" ]]; then
         warn "brew command not found. Install at https://brew.sh"
@@ -23,10 +23,8 @@ brew() {
     fi
 
     case "$cmd" in
-        install)    echo "$pkgs" | tr ' ' '\n' >> "$installs_file";;
-        uninstall)  for pkg in $pkgs; do
-                        sed -i "" -e "/^$pkg$/d" "$installs_file"
-                    done;;
+        install)    echo "$pkgs" | xargs -I {} "$homebrew" bundle add --file "$installs_file" {};;
+        uninstall)  echo "$pkgs" | xargs -I {} "$homebrew" bundle remove --file "$installs_file" {};;
     esac
 
     "$homebrew" "$cmd" "$pkgs"

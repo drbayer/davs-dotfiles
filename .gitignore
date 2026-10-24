@@ -6,4 +6,3 @@ profiles/work/bitbar
 safety-zone/*
 !safety-zone/README.md
 profiles/active
-.claude/*
