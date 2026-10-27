@@ -11,3 +11,5 @@ brew "uv"
 brew "jsonlint"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
