@@ -1298,6 +1298,8 @@
 	a2luZCI6ImF1dG9TZW5kQ2xpcHBpbmdzV2hlbklkbGUifV0sInVuaXF1ZUlkZW50aWZp
 	ZXIiOiJidWlsdGluLmNsYXVkZUNvZGUucmV2aWV3In1dfV0=
 	</data>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
