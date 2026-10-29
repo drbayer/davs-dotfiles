@@ -7,3 +7,6 @@ complete -o nospace -C /opt/homebrew/bin/tofu tofu
 
 # AWS CLI tab completion
 complete -C '/usr/local/bin/aws_completer' aws
+
+# k9s tab completion
+. ./helpers/k9s_bash_completion.sh

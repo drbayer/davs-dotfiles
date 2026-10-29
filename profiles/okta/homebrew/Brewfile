@@ -13,3 +13,9 @@ brew "jsonlint"
 brew "shellcheck"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
