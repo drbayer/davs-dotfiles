@@ -2,7 +2,6 @@ brew "bash-git-prompt"
 brew "multimarkdown"
 brew "lynx"
 brew "tree"
-brew "terragrunt"
 brew "gh"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
@@ -18,7 +17,3 @@ brew "k9s"
 brew "fzf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# OpenTofu / Terraform / Terragrunt / Terramate / Atmos version manager
-brew "tenv"
-# OpenTofu / Terraform / Terragrunt / Terramate / Atmos version manager
-brew "tenv"
