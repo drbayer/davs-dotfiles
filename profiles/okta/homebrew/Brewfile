@@ -17,3 +17,5 @@ brew "k9s"
 brew "fzf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
