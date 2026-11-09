@@ -19,3 +19,5 @@ brew "fzf"
 brew "bat"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# Command-line packet analyzer
+brew "tcpdump"
